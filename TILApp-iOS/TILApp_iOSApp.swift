@@ -6,12 +6,18 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 @main
 struct TILApp_iOSApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            CounterView(
+                store: Store(initialState: CounterFeature.State(),
+                             reducer: {
+                                 CounterFeature()
+                                     ._printChanges()
+                             }))
         }
     }
 }

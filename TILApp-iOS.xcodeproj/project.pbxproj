@@ -8,21 +8,70 @@
 
 /* Begin PBXBuildFile section */
 		A03668622A1FA98500C12C56 /* TILApp_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03668612A1FA98500C12C56 /* TILApp_iOSApp.swift */; };
-		A03668642A1FA98500C12C56 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03668632A1FA98500C12C56 /* ContentView.swift */; };
+		A03668642A1FA98500C12C56 /* CounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03668632A1FA98500C12C56 /* CounterView.swift */; };
 		A03668662A1FA98700C12C56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A03668652A1FA98700C12C56 /* Assets.xcassets */; };
 		A03668692A1FA98700C12C56 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A03668682A1FA98700C12C56 /* Preview Assets.xcassets */; };
+		A03668712A1FAA3800C12C56 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = A03668702A1FAA3800C12C56 /* ComposableArchitecture */; };
+		A03668732A1FAA5100C12C56 /* CounterFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03668722A1FAA5100C12C56 /* CounterFeature.swift */; };
+		A03668832A207B6F00C12C56 /* CounterFeatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03668822A207B6F00C12C56 /* CounterFeatureTests.swift */; };
+		A03668852A20877600C12C56 /* NumberFactClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03668842A20877600C12C56 /* NumberFactClient.swift */; };
+		A036688A2A20916000C12C56 /* URLComponents+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03668892A20916000C12C56 /* URLComponents+Init.swift */; };
+		A036688C2A20920900C12C56 /* URLRequest+Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A036688B2A20920900C12C56 /* URLRequest+Builder.swift */; };
+		A036688E2A20936E00C12C56 /* URLSession+Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = A036688D2A20936E00C12C56 /* URLSession+Client.swift */; };
+		A03668902A20947C00C12C56 /* JSONDecoder+Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = A036688F2A20947C00C12C56 /* JSONDecoder+Shared.swift */; };
+		A03668922A2094A500C12C56 /* JSONEncoder+Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03668912A2094A500C12C56 /* JSONEncoder+Shared.swift */; };
+		A03668962A2095AD00C12C56 /* URLRequest+Acronyms.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03668952A2095AD00C12C56 /* URLRequest+Acronyms.swift */; };
+		A03668992A20984800C12C56 /* AcronymsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03668982A20984800C12C56 /* AcronymsClient.swift */; };
+		A036689E2A20D97400C12C56 /* URLComponents+Acronyms.swift in Sources */ = {isa = PBXBuildFile; fileRef = A036689D2A20D97400C12C56 /* URLComponents+Acronyms.swift */; };
+		A03668A12A20D99100C12C56 /* Acronym.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03668A02A20D99100C12C56 /* Acronym.swift */; };
+		A03668A32A20D9B400C12C56 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03668A22A20D9B400C12C56 /* User.swift */; };
+		A03668A52A20DA7900C12C56 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03668A42A20DA7900C12C56 /* Category.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A036687D2A207B4700C12C56 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A03668562A1FA98500C12C56 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A036685D2A1FA98500C12C56;
+			remoteInfo = "TILApp-iOS";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		A036685E2A1FA98500C12C56 /* TILApp-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TILApp-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A03668612A1FA98500C12C56 /* TILApp_iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TILApp_iOSApp.swift; sourceTree = "<group>"; };
-		A03668632A1FA98500C12C56 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A03668632A1FA98500C12C56 /* CounterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterView.swift; sourceTree = "<group>"; };
 		A03668652A1FA98700C12C56 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A03668682A1FA98700C12C56 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		A03668722A1FAA5100C12C56 /* CounterFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterFeature.swift; sourceTree = "<group>"; };
+		A03668742A1FCC3F00C12C56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		A03668792A207B4700C12C56 /* TILApp-iOSUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TILApp-iOSUnitTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A03668822A207B6F00C12C56 /* CounterFeatureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterFeatureTests.swift; sourceTree = "<group>"; };
+		A03668842A20877600C12C56 /* NumberFactClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFactClient.swift; sourceTree = "<group>"; };
+		A03668892A20916000C12C56 /* URLComponents+Init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLComponents+Init.swift"; sourceTree = "<group>"; };
+		A036688B2A20920900C12C56 /* URLRequest+Builder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+Builder.swift"; sourceTree = "<group>"; };
+		A036688D2A20936E00C12C56 /* URLSession+Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+Client.swift"; sourceTree = "<group>"; };
+		A036688F2A20947C00C12C56 /* JSONDecoder+Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONDecoder+Shared.swift"; sourceTree = "<group>"; };
+		A03668912A2094A500C12C56 /* JSONEncoder+Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "JSONEncoder+Shared.swift"; sourceTree = "<group>"; };
+		A03668952A2095AD00C12C56 /* URLRequest+Acronyms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+Acronyms.swift"; sourceTree = "<group>"; };
+		A03668982A20984800C12C56 /* AcronymsClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcronymsClient.swift; sourceTree = "<group>"; };
+		A036689D2A20D97400C12C56 /* URLComponents+Acronyms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLComponents+Acronyms.swift"; sourceTree = "<group>"; };
+		A03668A02A20D99100C12C56 /* Acronym.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Acronym.swift; sourceTree = "<group>"; };
+		A03668A22A20D9B400C12C56 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		A03668A42A20DA7900C12C56 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		A036685B2A1FA98500C12C56 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A03668712A1FAA3800C12C56 /* ComposableArchitecture in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A03668762A207B4700C12C56 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -36,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				A03668602A1FA98500C12C56 /* TILApp-iOS */,
+				A036687A2A207B4700C12C56 /* TILApp-iOSUnitTests */,
 				A036685F2A1FA98500C12C56 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -44,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				A036685E2A1FA98500C12C56 /* TILApp-iOS.app */,
+				A03668792A207B4700C12C56 /* TILApp-iOSUnitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -51,10 +102,15 @@
 		A03668602A1FA98500C12C56 /* TILApp-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				A036689F2A20D98900C12C56 /* Models */,
+				A03668882A20914B00C12C56 /* Networking */,
+				A03668742A1FCC3F00C12C56 /* Info.plist */,
 				A03668612A1FA98500C12C56 /* TILApp_iOSApp.swift */,
-				A03668632A1FA98500C12C56 /* ContentView.swift */,
+				A03668632A1FA98500C12C56 /* CounterView.swift */,
 				A03668652A1FA98700C12C56 /* Assets.xcassets */,
 				A03668672A1FA98700C12C56 /* Preview Content */,
+				A03668722A1FAA5100C12C56 /* CounterFeature.swift */,
+				A03668842A20877600C12C56 /* NumberFactClient.swift */,
 			);
 			path = "TILApp-iOS";
 			sourceTree = "<group>";
@@ -65,6 +121,63 @@
 				A03668682A1FA98700C12C56 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		A036687A2A207B4700C12C56 /* TILApp-iOSUnitTests */ = {
+			isa = PBXGroup;
+			children = (
+				A03668822A207B6F00C12C56 /* CounterFeatureTests.swift */,
+			);
+			path = "TILApp-iOSUnitTests";
+			sourceTree = "<group>";
+		};
+		A03668882A20914B00C12C56 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				A036689C2A20D95B00C12C56 /* Requests */,
+				A036689B2A20D94D00C12C56 /* Components */,
+				A036689A2A20D93300C12C56 /* Clients */,
+				A03668892A20916000C12C56 /* URLComponents+Init.swift */,
+				A036688B2A20920900C12C56 /* URLRequest+Builder.swift */,
+				A036688D2A20936E00C12C56 /* URLSession+Client.swift */,
+				A036688F2A20947C00C12C56 /* JSONDecoder+Shared.swift */,
+				A03668912A2094A500C12C56 /* JSONEncoder+Shared.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		A036689A2A20D93300C12C56 /* Clients */ = {
+			isa = PBXGroup;
+			children = (
+				A03668982A20984800C12C56 /* AcronymsClient.swift */,
+			);
+			path = Clients;
+			sourceTree = "<group>";
+		};
+		A036689B2A20D94D00C12C56 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				A036689D2A20D97400C12C56 /* URLComponents+Acronyms.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		A036689C2A20D95B00C12C56 /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				A03668952A2095AD00C12C56 /* URLRequest+Acronyms.swift */,
+			);
+			path = Requests;
+			sourceTree = "<group>";
+		};
+		A036689F2A20D98900C12C56 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A03668A02A20D99100C12C56 /* Acronym.swift */,
+				A03668A22A20D9B400C12C56 /* User.swift */,
+				A03668A42A20DA7900C12C56 /* Category.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,9 +196,30 @@
 			dependencies = (
 			);
 			name = "TILApp-iOS";
+			packageProductDependencies = (
+				A03668702A1FAA3800C12C56 /* ComposableArchitecture */,
+			);
 			productName = "TILApp-iOS";
 			productReference = A036685E2A1FA98500C12C56 /* TILApp-iOS.app */;
 			productType = "com.apple.product-type.application";
+		};
+		A03668782A207B4700C12C56 /* TILApp-iOSUnitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A036687F2A207B4700C12C56 /* Build configuration list for PBXNativeTarget "TILApp-iOSUnitTests" */;
+			buildPhases = (
+				A03668752A207B4700C12C56 /* Sources */,
+				A03668762A207B4700C12C56 /* Frameworks */,
+				A03668772A207B4700C12C56 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A036687E2A207B4700C12C56 /* PBXTargetDependency */,
+			);
+			name = "TILApp-iOSUnitTests";
+			productName = "TILApp-iOSUnitTests";
+			productReference = A03668792A207B4700C12C56 /* TILApp-iOSUnitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -100,6 +234,11 @@
 					A036685D2A1FA98500C12C56 = {
 						CreatedOnToolsVersion = 14.3;
 					};
+					A03668782A207B4700C12C56 = {
+						CreatedOnToolsVersion = 14.3;
+						LastSwiftMigration = 1430;
+						TestTargetID = A036685D2A1FA98500C12C56;
+					};
 				};
 			};
 			buildConfigurationList = A03668592A1FA98500C12C56 /* Build configuration list for PBXProject "TILApp-iOS" */;
@@ -111,11 +250,15 @@
 				Base,
 			);
 			mainGroup = A03668552A1FA98500C12C56;
+			packageReferences = (
+				A036686F2A1FAA3800C12C56 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+			);
 			productRefGroup = A036685F2A1FA98500C12C56 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				A036685D2A1FA98500C12C56 /* TILApp-iOS */,
+				A03668782A207B4700C12C56 /* TILApp-iOSUnitTests */,
 			);
 		};
 /* End PBXProject section */
@@ -130,6 +273,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A03668772A207B4700C12C56 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -137,12 +287,41 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A03668642A1FA98500C12C56 /* ContentView.swift in Sources */,
+				A03668732A1FAA5100C12C56 /* CounterFeature.swift in Sources */,
+				A03668A12A20D99100C12C56 /* Acronym.swift in Sources */,
+				A03668642A1FA98500C12C56 /* CounterView.swift in Sources */,
+				A03668992A20984800C12C56 /* AcronymsClient.swift in Sources */,
+				A03668922A2094A500C12C56 /* JSONEncoder+Shared.swift in Sources */,
+				A036688A2A20916000C12C56 /* URLComponents+Init.swift in Sources */,
+				A03668A32A20D9B400C12C56 /* User.swift in Sources */,
+				A036688E2A20936E00C12C56 /* URLSession+Client.swift in Sources */,
+				A03668962A2095AD00C12C56 /* URLRequest+Acronyms.swift in Sources */,
+				A03668902A20947C00C12C56 /* JSONDecoder+Shared.swift in Sources */,
+				A036688C2A20920900C12C56 /* URLRequest+Builder.swift in Sources */,
+				A03668A52A20DA7900C12C56 /* Category.swift in Sources */,
 				A03668622A1FA98500C12C56 /* TILApp_iOSApp.swift in Sources */,
+				A03668852A20877600C12C56 /* NumberFactClient.swift in Sources */,
+				A036689E2A20D97400C12C56 /* URLComponents+Acronyms.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A03668752A207B4700C12C56 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A03668832A207B6F00C12C56 /* CounterFeatureTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A036687E2A207B4700C12C56 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A036685D2A1FA98500C12C56 /* TILApp-iOS */;
+			targetProxy = A036687D2A207B4700C12C56 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		A036686A2A1FA98700C12C56 /* Debug */ = {
@@ -270,6 +449,7 @@
 				DEVELOPMENT_TEAM = 7KN966P9LP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "TILApp-iOS/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -299,6 +479,7 @@
 				DEVELOPMENT_TEAM = 7KN966P9LP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "TILApp-iOS/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -314,6 +495,53 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		A03668802A207B4700C12C56 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7KN966P9LP;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.verticalcoding.TILApp-iOSUnitTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TILApp-iOS.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TILApp-iOS";
+			};
+			name = Debug;
+		};
+		A03668812A207B4700C12C56 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7KN966P9LP;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.verticalcoding.TILApp-iOSUnitTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TILApp-iOS.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TILApp-iOS";
 			};
 			name = Release;
 		};
@@ -338,7 +566,35 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		A036687F2A207B4700C12C56 /* Build configuration list for PBXNativeTarget "TILApp-iOSUnitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A03668802A207B4700C12C56 /* Debug */,
+				A03668812A207B4700C12C56 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A036686F2A1FAA3800C12C56 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.53.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A03668702A1FAA3800C12C56 /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A036686F2A1FAA3800C12C56 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A03668562A1FA98500C12C56 /* Project object */;
 }
