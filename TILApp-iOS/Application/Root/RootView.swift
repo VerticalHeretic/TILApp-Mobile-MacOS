@@ -26,11 +26,13 @@ struct RootView: View {
                 }
                 .badge(viewStore.state.acronymsCount)
                 
-                Text("Users")
-                    .tag(Root.State.Tab.users)
-                    .tabItem {
-                        Label("Users", systemImage: "person.fill")
-                    }
+                UsersView(store: self.store.scope(state: \.users,
+                                                  action: Root.Action.users))
+                .tag(Root.State.Tab.users)
+                .tabItem {
+                    Label("Users", systemImage: "person.fill")
+                }
+                    
                 Text("Categories")
                     .tag(Root.State.Tab.categories)
                     .tabItem {

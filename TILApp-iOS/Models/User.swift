@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct UserResponse: Codable, Equatable {
+struct UserResponse: Codable, Equatable, Identifiable {
     let id: UUID
     let name: String
     let username: String

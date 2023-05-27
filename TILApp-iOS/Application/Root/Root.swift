@@ -19,11 +19,13 @@ struct Root: ReducerProtocol {
         
         var selectedTab: Tab = .acronyms
         var acronyms = AcronymsFeature.State()
+        var users = UsersFeature.State()
     }
     
     enum Action: Equatable {
         case selectedTabChange(State.Tab)
         case acronyms(AcronymsFeature.Action)
+        case users(UsersFeature.Action)
     }
     
     var body: some ReducerProtocol<State, Action> {
@@ -40,6 +42,10 @@ struct Root: ReducerProtocol {
         
         Scope(state: \.acronyms, action: /Action.acronyms) {
             AcronymsFeature()
+        }
+        
+        Scope(state: \.users, action: /Action.users) {
+            UsersFeature()
         }
     }
 }

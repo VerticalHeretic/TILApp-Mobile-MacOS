@@ -55,11 +55,10 @@ struct AcronymsView: View {
 
 struct AcronymsView_Previews: PreviewProvider {
     static var previews: some View {
-        AcronymsView(
-            store: Store(initialState: AcronymsFeature.State(),
-                         reducer: {
-                             AcronymsFeature()
-                         })
+        AcronymsView(store: Store(initialState: AcronymsFeature.State(),
+                                  reducer: {
+            AcronymsFeature()
+        })
         )
     }
 }
