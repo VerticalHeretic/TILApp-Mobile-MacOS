@@ -8,18 +8,24 @@
 import SwiftUI
 import ComposableArchitecture
 
-struct MainView: View {
+struct RootView: View {
     let store: StoreOf<Root>
     
     var body: some View {
-        WithViewStore(store, observe: \.selectedTab) { viewStore in
-            TabView(selection: viewStore.binding(send: Root.Action.selectedTabChange)) {
+        WithViewStore(
+            store,
+            observe: { (selectedTab: $0.selectedTab, acronymsCount: $0.acronyms.acronyms.count) },
+            removeDuplicates: ==
+        ) { viewStore in
+            TabView(selection: viewStore.binding(get: \.selectedTab, send: Root.Action.selectedTabChange)) {
                 AcronymsView(store: self.store.scope(state: \.acronyms,
                                                      action: Root.Action.acronyms))
-                    .tag(Root.State.Tab.acronyms)
-                    .tabItem {
-                        Label("Acronyms", systemImage: "text.quote")
-                    }
+                .tag(Root.State.Tab.acronyms)
+                .tabItem {
+                    Label("Acronyms", systemImage: "text.quote")
+                }
+                .badge(viewStore.state.acronymsCount)
+                
                 Text("Users")
                     .tag(Root.State.Tab.users)
                     .tabItem {
@@ -37,7 +43,7 @@ struct MainView: View {
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView(
+        RootView(
             store: Store(initialState: Root.State(),
                          reducer: {
                              Root()

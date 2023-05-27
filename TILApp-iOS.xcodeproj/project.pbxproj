@@ -27,7 +27,7 @@
 		A03668A32A20D9B400C12C56 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03668A22A20D9B400C12C56 /* User.swift */; };
 		A03668A52A20DA7900C12C56 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03668A42A20DA7900C12C56 /* Category.swift */; };
 		A03668A72A20E05900C12C56 /* Empty.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03668A62A20E05900C12C56 /* Empty.swift */; };
-		A03668AD2A20E2A800C12C56 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03668AC2A20E2A800C12C56 /* MainView.swift */; };
+		A03668AD2A20E2A800C12C56 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03668AC2A20E2A800C12C56 /* RootView.swift */; };
 		A03668AF2A20E34D00C12C56 /* Root.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03668AE2A20E34D00C12C56 /* Root.swift */; };
 		A03668B22A20F1FD00C12C56 /* AcronymsFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03668B12A20F1FD00C12C56 /* AcronymsFeature.swift */; };
 		A03668B62A214C5D00C12C56 /* AcronymsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03668B52A214C5D00C12C56 /* AcronymsView.swift */; };
@@ -66,7 +66,7 @@
 		A03668A22A20D9B400C12C56 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A03668A42A20DA7900C12C56 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		A03668A62A20E05900C12C56 /* Empty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Empty.swift; sourceTree = "<group>"; };
-		A03668AC2A20E2A800C12C56 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		A03668AC2A20E2A800C12C56 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		A03668AE2A20E34D00C12C56 /* Root.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Root.swift; sourceTree = "<group>"; };
 		A03668B12A20F1FD00C12C56 /* AcronymsFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcronymsFeature.swift; sourceTree = "<group>"; };
 		A03668B52A214C5D00C12C56 /* AcronymsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcronymsView.swift; sourceTree = "<group>"; };
@@ -196,18 +196,18 @@
 			isa = PBXGroup;
 			children = (
 				A03668B02A20F1F000C12C56 /* Acronyms */,
-				A03668AB2A20E29900C12C56 /* Main */,
+				A03668AB2A20E29900C12C56 /* Root */,
 			);
 			path = Application;
 			sourceTree = "<group>";
 		};
-		A03668AB2A20E29900C12C56 /* Main */ = {
+		A03668AB2A20E29900C12C56 /* Root */ = {
 			isa = PBXGroup;
 			children = (
-				A03668AC2A20E2A800C12C56 /* MainView.swift */,
+				A03668AC2A20E2A800C12C56 /* RootView.swift */,
 				A03668AE2A20E34D00C12C56 /* Root.swift */,
 			);
-			path = Main;
+			path = Root;
 			sourceTree = "<group>";
 		};
 		A03668B02A20F1F000C12C56 /* Acronyms */ = {
@@ -340,7 +340,7 @@
 				A03668962A2095AD00C12C56 /* URLRequest+Acronyms.swift in Sources */,
 				A03668902A20947C00C12C56 /* JSONDecoder+Shared.swift in Sources */,
 				A03668AF2A20E34D00C12C56 /* Root.swift in Sources */,
-				A03668AD2A20E2A800C12C56 /* MainView.swift in Sources */,
+				A03668AD2A20E2A800C12C56 /* RootView.swift in Sources */,
 				A036688C2A20920900C12C56 /* URLRequest+Builder.swift in Sources */,
 				A03668A52A20DA7900C12C56 /* Category.swift in Sources */,
 				A03668622A1FA98500C12C56 /* TILApp_iOSApp.swift in Sources */,

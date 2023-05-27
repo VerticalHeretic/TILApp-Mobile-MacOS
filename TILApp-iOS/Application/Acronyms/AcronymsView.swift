@@ -13,18 +13,41 @@ struct AcronymsView: View {
     
     var body: some View {
         WithViewStore(store, observe: { $0 }) { viewStore in
-            VStack {
-                if viewStore.isLoading {
-                    ProgressView()
-                } else {
-                    List(viewStore.acronyms) { acronym in
-                        Text(acronym.long)
+            NavigationStack {
+                ZStack {
+                    List(viewStore.searchResults) { acronym in
+                        VStack(alignment: .leading) {
+                            HStack {
+                                Text(acronym.short)
+                                    .font(.headline)
+                                    .fontWeight(.bold)
+                                Text("by ")
+                                    .font(.caption)
+                            }
+                          
+                            Text(acronym.long)
+                                .font(.caption)
+                        }
+                        
+                    }
+                    .navigationTitle("Acronyms")
+                    
+                    if viewStore.isLoading {
+                        ProgressView()
                     }
                 }
             }
-            .task {
+            .onAppear {
+                if viewStore.acronyms.isEmpty {
+                    viewStore.send(.fetchAcronyms)
+                }
+            }
+            .refreshable {
                 viewStore.send(.fetchAcronyms)
             }
+            .searchable(text: viewStore.binding(get: \.searchTerm,
+                                                send: { .searchAcronyms($0)})
+            )
         }
         
     }

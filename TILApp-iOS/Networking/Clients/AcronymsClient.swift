@@ -14,6 +14,7 @@ struct AcronymsClient {
     var first: () async throws -> AcronymResponse
     var single: (_ id: String) async throws -> AcronymResponse
     var create: (_ body: AcronymRequest) async throws -> AcronymResponse
+    var search: (_ term: String) async throws -> [AcronymResponse]
     var update: (_ id: String, _ body: AcronymRequest) async throws -> AcronymResponse
     var delete: (_ id: String) async throws -> ()
     var user: (_ id: String) async throws -> UserResponse
@@ -43,6 +44,9 @@ extension AcronymsClient: DependencyKey {
         create: { body in
             let acronym: AcronymResponse = try await URLSession.shared.request(for: .createAcronym(body: body))
             return acronym
+        },
+        search: { term in
+            try await URLSession.shared.request(for: .searchAcronyms(term: term))
         },
         update: { id, body in
             let acronym: AcronymResponse = try await URLSession.shared.request(for: .updateAcronym(id: id, body: body))

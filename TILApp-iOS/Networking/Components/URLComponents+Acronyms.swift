@@ -26,7 +26,7 @@ extension URLComponents {
     }
     
     static func acronymSearch(term: String) -> Self {
-        let queryItems: [URLQueryItem] = [.init(name: "TERM", value: term)]
+        let queryItems: [URLQueryItem] = [.init(name: "term", value: term)]
         return Self(path: "/api/acronyms/search", queryItems: queryItems)
     }
     

@@ -12,7 +12,7 @@ import ComposableArchitecture
 struct TILApp_iOSApp: App {
     var body: some Scene {
         WindowGroup {
-            MainView(store: Store(initialState: Root.State(),
+            RootView(store: Store(initialState: Root.State(),
                                   reducer: {
                 Root()
                     ._printChanges()
