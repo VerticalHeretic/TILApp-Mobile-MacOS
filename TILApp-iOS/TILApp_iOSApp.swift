@@ -12,12 +12,11 @@ import ComposableArchitecture
 struct TILApp_iOSApp: App {
     var body: some Scene {
         WindowGroup {
-            CounterView(
-                store: Store(initialState: CounterFeature.State(),
-                             reducer: {
-                                 CounterFeature()
-                                     ._printChanges()
-                             }))
+            MainView(store: Store(initialState: Root.State(),
+                                  reducer: {
+                Root()
+                    ._printChanges()
+            }))
         }
     }
 }

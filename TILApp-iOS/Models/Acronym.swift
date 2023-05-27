@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct AcronymResponse: Codable, Equatable {
+struct AcronymResponse: Codable, Equatable, Identifiable {
     let id: UUID
     let short: String
     let long: String
