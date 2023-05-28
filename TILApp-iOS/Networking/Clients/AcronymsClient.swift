@@ -26,42 +26,33 @@ struct AcronymsClient {
 extension AcronymsClient: DependencyKey {
     static let liveValue = AcronymsClient(
         all: {
-            let acronyms: [AcronymResponse] = try await URLSession.shared.request(for: .getAcronyms)
-            return acronyms
+            try await URLSession.shared.request(for: .getAcronyms)
         },
         sorted: {
-            let acronyms: [AcronymResponse] = try await URLSession.shared.request(for: .getSortedAcronyms)
-            return acronyms
+            try await URLSession.shared.request(for: .getSortedAcronyms)
         },
         first: {
-            let acronym: AcronymResponse = try await URLSession.shared.request(for: .getFirstAcronym)
-            return acronym
+            try await URLSession.shared.request(for: .getFirstAcronym)
         },
         single: { id in
-            let acronym: AcronymResponse = try await URLSession.shared.request(for: .getAcronym(id: id))
-            return acronym
+            try await URLSession.shared.request(for: .getAcronym(id: id))
         },
         create: { body in
-            let acronym: AcronymResponse = try await URLSession.shared.request(for: .createAcronym(body: body))
-            return acronym
+            try await URLSession.shared.request(for: .createAcronym(body: body))
         },
         search: { term in
             try await URLSession.shared.request(for: .searchAcronyms(term: term))
         },
         update: { id, body in
-            let acronym: AcronymResponse = try await URLSession.shared.request(for: .updateAcronym(id: id, body: body))
-            return acronym
-        },
+            try await URLSession.shared.request(for: .updateAcronym(id: id, body: body))        },
         delete: { id in
             let _: EmptyResponse = try await URLSession.shared.request(for: .deleteAcronym(id: id))
         },
         user: { id in
-            let user: UserResponse = try await URLSession.shared.request(for: .getAcronymUser(id: id))
-            return user
+            try await URLSession.shared.request(for: .getAcronymUser(id: id))
         },
         categories: { id in
-            let categories: [CategoryResponse] = try await URLSession.shared.request(for: .getAcronymCategories(id: id))
-            return categories
+            try await URLSession.shared.request(for: .getAcronymCategories(id: id))
         },
         addCategory: { id, categoryID in
             let _: EmptyResponse = try await URLSession.shared.request(for: .addCategoryToAcronym(id: id, categoryID: categoryID))

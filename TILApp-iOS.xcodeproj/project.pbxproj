@@ -36,6 +36,8 @@
 		A03668BE2A22A17700C12C56 /* URLComponents+Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03668BD2A22A17700C12C56 /* URLComponents+Users.swift */; };
 		A03668C02A22A18000C12C56 /* URLRequest+Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03668BF2A22A18000C12C56 /* URLRequest+Users.swift */; };
 		A03668C22A22A2CB00C12C56 /* UsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03668C12A22A2CB00C12C56 /* UsersView.swift */; };
+		A03668C52A23E5A100C12C56 /* AcronymForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03668C42A23E5A100C12C56 /* AcronymForm.swift */; };
+		A03668C72A23E5AE00C12C56 /* AcronymFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03668C62A23E5AE00C12C56 /* AcronymFeature.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +82,8 @@
 		A03668BD2A22A17700C12C56 /* URLComponents+Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLComponents+Users.swift"; sourceTree = "<group>"; };
 		A03668BF2A22A18000C12C56 /* URLRequest+Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+Users.swift"; sourceTree = "<group>"; };
 		A03668C12A22A2CB00C12C56 /* UsersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersView.swift; sourceTree = "<group>"; };
+		A03668C42A23E5A100C12C56 /* AcronymForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcronymForm.swift; sourceTree = "<group>"; };
+		A03668C62A23E5AE00C12C56 /* AcronymFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcronymFeature.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,6 +232,7 @@
 		A03668B02A20F1F000C12C56 /* Acronyms */ = {
 			isa = PBXGroup;
 			children = (
+				A03668C32A23E58300C12C56 /* AcronymForm */,
 				A03668B12A20F1FD00C12C56 /* AcronymsFeature.swift */,
 				A03668B52A214C5D00C12C56 /* AcronymsView.swift */,
 			);
@@ -248,6 +253,15 @@
 			children = (
 			);
 			path = Categories;
+			sourceTree = "<group>";
+		};
+		A03668C32A23E58300C12C56 /* AcronymForm */ = {
+			isa = PBXGroup;
+			children = (
+				A03668C42A23E5A100C12C56 /* AcronymForm.swift */,
+				A03668C62A23E5AE00C12C56 /* AcronymFeature.swift */,
+			);
+			path = AcronymForm;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -380,8 +394,10 @@
 				A036688C2A20920900C12C56 /* URLRequest+Builder.swift in Sources */,
 				A03668A52A20DA7900C12C56 /* Category.swift in Sources */,
 				A03668622A1FA98500C12C56 /* TILApp_iOSApp.swift in Sources */,
+				A03668C52A23E5A100C12C56 /* AcronymForm.swift in Sources */,
 				A03668852A20877600C12C56 /* NumberFactClient.swift in Sources */,
 				A036689E2A20D97400C12C56 /* URLComponents+Acronyms.swift in Sources */,
+				A03668C72A23E5AE00C12C56 /* AcronymFeature.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
