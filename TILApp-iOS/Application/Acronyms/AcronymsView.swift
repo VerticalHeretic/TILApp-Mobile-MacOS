@@ -60,10 +60,19 @@ struct AcronymsView: View {
                     }
                     .navigationDestination(for: AcronymsFeature.State.Destination.self) { destination in
                         switch destination {
+                        //TODO: Approach below works but it is not saving the state, so when we move to other tab it will reset. This probably need to be inside the `AcronymsFeature`. So I need to fix this
                         case .edit(let acronym):
-                            Text(acronym.long)
+                            AcronymForm(store: Store(
+                                initialState: AcronymFeature.State(acronym: acronym),
+                                reducer: {
+                                    AcronymFeature()
+                                }))
                         case .create:
-                            Text("Create")
+                            AcronymForm(store: Store(
+                                initialState: AcronymFeature.State(),
+                                reducer: {
+                                    AcronymFeature()
+                                }))
                         }
                     }
                     

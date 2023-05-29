@@ -5,17 +5,20 @@
 //  Created by Łukasz Stachnik on 27/05/2023.
 //
 
-import Foundation
+import SwiftUI
 import ComposableArchitecture
 
 struct UsersFeature: ReducerProtocol {
     
     struct State: Equatable {
         var isLoading = false
+        var alert: AlertState<Action>?
         var users: [UserResponse] = []
     }
     
     enum Action: Equatable {
+        case copyButtonTapped(UserResponse)
+        case copyButtonAlertDismissed
         case fetchUsers
         case usersResponse([UserResponse])
     }
@@ -24,6 +27,15 @@ struct UsersFeature: ReducerProtocol {
     
     func reduce(into state: inout State, action: Action) -> EffectTask<Action> {
         switch action {
+        case .copyButtonTapped(let user):
+            UIPasteboard.general.string = user.id.uuidString
+            state.alert = AlertState {
+                TextState("Copied!")
+            }
+            return .none
+        case .copyButtonAlertDismissed:
+            state.alert = nil
+            return .none
         case .fetchUsers:
             state.isLoading = true
             return .run { send in

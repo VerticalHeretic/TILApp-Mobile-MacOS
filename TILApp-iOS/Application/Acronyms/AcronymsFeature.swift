@@ -46,37 +46,39 @@ struct AcronymsFeature: ReducerProtocol {
     
     @Dependency(\.acronymsClient) var acronymClient
     
-    func reduce(into state: inout State, action: Action) -> EffectTask<Action> {
-        switch action {
-        case .fetchAcronyms:
-            state.isLoading = true
-            return .run { send in
-                try await send(.acronymsResponse(self.acronymClient.all()))
+    var body: some ReducerProtocol<State, Action> {
+        Reduce { state, action in
+            switch action {
+            case .fetchAcronyms:
+                state.isLoading = true
+                return .run { send in
+                    try await send(.acronymsResponse(self.acronymClient.all()))
+                }
+            case .deleteAcronym(let id):
+                return .run { send in
+                    try await self.acronymClient.delete(id)
+                    await send(.deleteResponse(id))
+                }
+            case .deleteResponse(let id):
+                state.acronyms.removeAll(where: { $0.id.description == id })
+                return .none
+            case .searchAcronyms(let term):
+                state.searchTerm = term
+                return .none
+            case .acronymsResponse(let acronyms):
+                state.acronyms = acronyms
+                state.isLoading = false
+                return .none
+            case .editAcronym(let acronym):
+                state.path.append(.edit(acronym))
+                return .none
+            case .createAcronym:
+                state.path.append(.create)
+                return .none
+            case let .navigationPathChanged(path):
+                state.path = path
+                return .none
             }
-        case .deleteAcronym(let id):
-            return .run { send in
-                try await self.acronymClient.delete(id)
-                await send(.deleteResponse(id))
-            }
-        case .deleteResponse(let id):
-            state.acronyms.removeAll(where: { $0.id.description == id })
-            return .none
-        case .searchAcronyms(let term):
-            state.searchTerm = term
-            return .none
-        case .acronymsResponse(let acronyms):
-            state.acronyms = acronyms
-            state.isLoading = false
-            return .none
-        case .editAcronym(let acronym):
-            state.path.append(.edit(acronym))
-            return .none
-        case .createAcronym:
-            state.path.append(.create)
-            return .none
-        case let .navigationPathChanged(path):
-            state.path = path
-            return .none
         }
     }
 }

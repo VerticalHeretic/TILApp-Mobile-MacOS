@@ -27,7 +27,7 @@ struct UsersView: View {
                         .font(.caption)
                 }
                 .onTapGesture {
-                    UIPasteboard.general.string = user.id.description //TODO: This is pretty nit little feature but needs some kind of alert for user to know about it
+                    viewStore.send(.copyButtonTapped(user))
                 }
                 .navigationTitle("Users")
             }
@@ -36,6 +36,10 @@ struct UsersView: View {
                     viewStore.send(.fetchUsers)
                 }
             }
+            .alert(
+                self.store.scope(state: \.alert, action: { $0 }),
+                dismiss: .copyButtonAlertDismissed
+            )
         }
     }
 }

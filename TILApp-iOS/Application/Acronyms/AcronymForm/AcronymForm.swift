@@ -6,15 +6,36 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 struct AcronymForm: View {
+    let store: StoreOf<AcronymFeature>
+    @Environment(\.dismiss) private var dismiss
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        WithViewStore(self.store, observe: { $0 }) { viewStore in
+            Form {
+                TextField("Acronym's Short Name", text: viewStore.binding(\.$short))
+                    .autocorrectionDisabled()
+                TextField("Acronym's Long Name", text: viewStore.binding(\.$long))
+                TextField("Users ID", text: viewStore.binding(\.$userID))
+                
+                Button("Save"){
+                    Task {
+                        await viewStore.send(.saveTapped).finish()
+                        dismiss()
+                    }
+                }
+            }
+        }
     }
 }
 
 struct AcronymForm_Previews: PreviewProvider {
     static var previews: some View {
-        AcronymForm()
+        AcronymForm(store: Store(initialState: AcronymFeature.State(),
+                                 reducer: {
+            AcronymFeature()
+        }))
     }
 }
