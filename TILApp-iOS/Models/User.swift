@@ -12,3 +12,8 @@ struct UserResponse: Codable, Equatable, Identifiable {
     let name: String
     let username: String
 }
+
+struct UserRequest: Codable, Hashable {
+    let name: String
+    let username: String
+}

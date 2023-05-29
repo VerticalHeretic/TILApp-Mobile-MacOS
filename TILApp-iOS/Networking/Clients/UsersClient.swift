@@ -10,12 +10,24 @@ import ComposableArchitecture
 
 struct UsersClient {
     var all: () async throws -> [UserResponse]
+    var single: (String) async throws -> UserResponse
+    var acronyms: (String) async throws -> [AcronymResponse]
+    var create: (UserRequest) async throws -> UserResponse
 }
 
 extension UsersClient: DependencyKey {
     static var liveValue = UsersClient(
         all: {
             return try await URLSession.shared.request(for: .getUsers)
+        },
+        single: { id in
+            return try await URLSession.shared.request(for: .getUser(id: id))
+        },
+        acronyms: { id in
+            return try await URLSession.shared.request(for: .getUsersAcronyms(id: id))
+        },
+        create: { body in
+            return try await URLSession.shared.request(for: .createUser(body: body))
         }
     )
 }

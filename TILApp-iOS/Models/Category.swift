@@ -11,3 +11,7 @@ struct CategoryResponse: Codable, Equatable {
     let id: UUID
     let name: String
 }
+
+struct CategoryRequest: Codable, Equatable {
+    let name: String
+}

@@ -35,6 +35,11 @@
 		A03668C22A22A2CB00C12C56 /* UsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03668C12A22A2CB00C12C56 /* UsersView.swift */; };
 		A03668C52A23E5A100C12C56 /* AcronymForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03668C42A23E5A100C12C56 /* AcronymForm.swift */; };
 		A03668C72A23E5AE00C12C56 /* AcronymFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03668C62A23E5AE00C12C56 /* AcronymFeature.swift */; };
+		A0FF82522A253263004EB447 /* CategoriesFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FF82512A253263004EB447 /* CategoriesFeature.swift */; };
+		A0FF82542A253271004EB447 /* CategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FF82532A253271004EB447 /* CategoriesView.swift */; };
+		A0FF82562A2532E7004EB447 /* CategoriesClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FF82552A2532E7004EB447 /* CategoriesClient.swift */; };
+		A0FF82582A25331F004EB447 /* URLComponents+Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FF82572A25331F004EB447 /* URLComponents+Categories.swift */; };
+		A0FF825A2A253330004EB447 /* URLRequest+Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FF82592A253330004EB447 /* URLRequest+Categories.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +83,11 @@
 		A03668C12A22A2CB00C12C56 /* UsersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersView.swift; sourceTree = "<group>"; };
 		A03668C42A23E5A100C12C56 /* AcronymForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcronymForm.swift; sourceTree = "<group>"; };
 		A03668C62A23E5AE00C12C56 /* AcronymFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcronymFeature.swift; sourceTree = "<group>"; };
+		A0FF82512A253263004EB447 /* CategoriesFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesFeature.swift; sourceTree = "<group>"; };
+		A0FF82532A253271004EB447 /* CategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesView.swift; sourceTree = "<group>"; };
+		A0FF82552A2532E7004EB447 /* CategoriesClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesClient.swift; sourceTree = "<group>"; };
+		A0FF82572A25331F004EB447 /* URLComponents+Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLComponents+Categories.swift"; sourceTree = "<group>"; };
+		A0FF82592A253330004EB447 /* URLRequest+Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+Categories.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +177,7 @@
 			children = (
 				A03668982A20984800C12C56 /* AcronymsClient.swift */,
 				A03668BB2A22A16C00C12C56 /* UsersClient.swift */,
+				A0FF82552A2532E7004EB447 /* CategoriesClient.swift */,
 			);
 			path = Clients;
 			sourceTree = "<group>";
@@ -176,6 +187,7 @@
 			children = (
 				A036689D2A20D97400C12C56 /* URLComponents+Acronyms.swift */,
 				A03668BD2A22A17700C12C56 /* URLComponents+Users.swift */,
+				A0FF82572A25331F004EB447 /* URLComponents+Categories.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -185,6 +197,7 @@
 			children = (
 				A03668952A2095AD00C12C56 /* URLRequest+Acronyms.swift */,
 				A03668BF2A22A18000C12C56 /* URLRequest+Users.swift */,
+				A0FF82592A253330004EB447 /* URLRequest+Categories.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -242,6 +255,8 @@
 		A03668B82A22A0E200C12C56 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				A0FF82512A253263004EB447 /* CategoriesFeature.swift */,
+				A0FF82532A253271004EB447 /* CategoriesView.swift */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -387,16 +402,21 @@
 			files = (
 				A03668B22A20F1FD00C12C56 /* AcronymsFeature.swift in Sources */,
 				A03668C02A22A18000C12C56 /* URLRequest+Users.swift in Sources */,
+				A0FF82562A2532E7004EB447 /* CategoriesClient.swift in Sources */,
 				A03668A12A20D99100C12C56 /* Acronym.swift in Sources */,
 				A03668BA2A22A0F200C12C56 /* UsersFeature.swift in Sources */,
 				A03668992A20984800C12C56 /* AcronymsClient.swift in Sources */,
 				A03668922A2094A500C12C56 /* JSONEncoder+Shared.swift in Sources */,
+				A0FF82542A253271004EB447 /* CategoriesView.swift in Sources */,
+				A0FF825A2A253330004EB447 /* URLRequest+Categories.swift in Sources */,
 				A03668A72A20E05900C12C56 /* Empty.swift in Sources */,
 				A036688A2A20916000C12C56 /* URLComponents+Init.swift in Sources */,
 				A03668B62A214C5D00C12C56 /* AcronymsView.swift in Sources */,
 				A03668A32A20D9B400C12C56 /* User.swift in Sources */,
 				A036688E2A20936E00C12C56 /* URLSession+Client.swift in Sources */,
+				A0FF82522A253263004EB447 /* CategoriesFeature.swift in Sources */,
 				A03668962A2095AD00C12C56 /* URLRequest+Acronyms.swift in Sources */,
+				A0FF82582A25331F004EB447 /* URLComponents+Categories.swift in Sources */,
 				A03668902A20947C00C12C56 /* JSONDecoder+Shared.swift in Sources */,
 				A03668C22A22A2CB00C12C56 /* UsersView.swift in Sources */,
 				A03668AF2A20E34D00C12C56 /* Root.swift in Sources */,
