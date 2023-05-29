@@ -6,15 +6,31 @@
 //
 
 import SwiftUI
+import ComposableArchitecture
 
 struct CategoriesView: View {
+    let store: StoreOf<CategoriesFeature>
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        WithViewStore(store, observe: { $0 }) { viewStore in
+            List(viewStore.categories) { category in
+                Text(category.name)
+            }
+            .navigationTitle("Categories")
+            .onAppear {
+                if viewStore.categories.isEmpty {
+                    viewStore.send(.fetchCategories)
+                }
+            }
+        }
     }
 }
 
 struct CategoriesView_Previews: PreviewProvider {
     static var previews: some View {
-        CategoriesView()
+        CategoriesView(store: Store(initialState: CategoriesFeature.State(),
+                                    reducer: {
+            CategoriesFeature()
+        }))
     }
 }

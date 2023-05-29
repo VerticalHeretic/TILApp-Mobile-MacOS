@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CategoryResponse: Codable, Equatable {
+struct CategoryResponse: Codable, Equatable, Identifiable, Hashable {
     let id: UUID
     let name: String
 }

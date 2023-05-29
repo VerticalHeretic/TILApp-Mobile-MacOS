@@ -32,12 +32,13 @@ struct RootView: View {
                 .tabItem {
                     Label("Users", systemImage: "person.fill")
                 }
-                    
-                Text("Categories")
-                    .tag(Root.State.Tab.categories)
-                    .tabItem {
-                        Label("Categories", systemImage: "tag.fill")
-                    }
+                
+                CategoriesView(store: self.store.scope(state: \.categories,
+                                                       action: Root.Action.categories))
+                .tag(Root.State.Tab.categories)
+                .tabItem {
+                    Label("Categories", systemImage: "tag.fill")
+                }
             }
         }
     }
