@@ -47,7 +47,7 @@ public extension URLRequest {
         }
     }
     
-    private func map(_ transform: (inout Self) -> ()) -> Self {
+    private func map(_ transform: (inout Self) -> Void) -> Self {
         var request = self
         transform(&request)
         return request

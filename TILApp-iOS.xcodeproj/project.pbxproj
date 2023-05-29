@@ -8,13 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		A03668622A1FA98500C12C56 /* TILApp_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03668612A1FA98500C12C56 /* TILApp_iOSApp.swift */; };
-		A03668642A1FA98500C12C56 /* CounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03668632A1FA98500C12C56 /* CounterView.swift */; };
 		A03668662A1FA98700C12C56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A03668652A1FA98700C12C56 /* Assets.xcassets */; };
 		A03668692A1FA98700C12C56 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A03668682A1FA98700C12C56 /* Preview Assets.xcassets */; };
 		A03668712A1FAA3800C12C56 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = A03668702A1FAA3800C12C56 /* ComposableArchitecture */; };
-		A03668732A1FAA5100C12C56 /* CounterFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03668722A1FAA5100C12C56 /* CounterFeature.swift */; };
 		A03668832A207B6F00C12C56 /* CounterFeatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03668822A207B6F00C12C56 /* CounterFeatureTests.swift */; };
-		A03668852A20877600C12C56 /* NumberFactClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03668842A20877600C12C56 /* NumberFactClient.swift */; };
 		A036688A2A20916000C12C56 /* URLComponents+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03668892A20916000C12C56 /* URLComponents+Init.swift */; };
 		A036688C2A20920900C12C56 /* URLRequest+Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A036688B2A20920900C12C56 /* URLRequest+Builder.swift */; };
 		A036688E2A20936E00C12C56 /* URLSession+Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = A036688D2A20936E00C12C56 /* URLSession+Client.swift */; };
@@ -53,14 +50,11 @@
 /* Begin PBXFileReference section */
 		A036685E2A1FA98500C12C56 /* TILApp-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TILApp-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A03668612A1FA98500C12C56 /* TILApp_iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TILApp_iOSApp.swift; sourceTree = "<group>"; };
-		A03668632A1FA98500C12C56 /* CounterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterView.swift; sourceTree = "<group>"; };
 		A03668652A1FA98700C12C56 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A03668682A1FA98700C12C56 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		A03668722A1FAA5100C12C56 /* CounterFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterFeature.swift; sourceTree = "<group>"; };
 		A03668742A1FCC3F00C12C56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		A03668792A207B4700C12C56 /* TILApp-iOSUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TILApp-iOSUnitTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A03668822A207B6F00C12C56 /* CounterFeatureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterFeatureTests.swift; sourceTree = "<group>"; };
-		A03668842A20877600C12C56 /* NumberFactClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFactClient.swift; sourceTree = "<group>"; };
 		A03668892A20916000C12C56 /* URLComponents+Init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLComponents+Init.swift"; sourceTree = "<group>"; };
 		A036688B2A20920900C12C56 /* URLRequest+Builder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+Builder.swift"; sourceTree = "<group>"; };
 		A036688D2A20936E00C12C56 /* URLSession+Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+Client.swift"; sourceTree = "<group>"; };
@@ -131,11 +125,8 @@
 				A03668882A20914B00C12C56 /* Networking */,
 				A03668742A1FCC3F00C12C56 /* Info.plist */,
 				A03668612A1FA98500C12C56 /* TILApp_iOSApp.swift */,
-				A03668632A1FA98500C12C56 /* CounterView.swift */,
 				A03668652A1FA98700C12C56 /* Assets.xcassets */,
 				A03668672A1FA98700C12C56 /* Preview Content */,
-				A03668722A1FAA5100C12C56 /* CounterFeature.swift */,
-				A03668842A20877600C12C56 /* NumberFactClient.swift */,
 			);
 			path = "TILApp-iOS";
 			sourceTree = "<group>";
@@ -274,6 +265,7 @@
 				A036685A2A1FA98500C12C56 /* Sources */,
 				A036685B2A1FA98500C12C56 /* Frameworks */,
 				A036685C2A1FA98500C12C56 /* Resources */,
+				A03668C82A249FA200C12C56 /* Swiftlint */,
 			);
 			buildRules = (
 			);
@@ -366,17 +358,37 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		A03668C82A249FA200C12C56 /* Swiftlint */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Swiftlint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftlint > /dev/null; then\n  swiftlint .\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A036685A2A1FA98500C12C56 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				A03668B22A20F1FD00C12C56 /* AcronymsFeature.swift in Sources */,
-				A03668732A1FAA5100C12C56 /* CounterFeature.swift in Sources */,
 				A03668C02A22A18000C12C56 /* URLRequest+Users.swift in Sources */,
 				A03668A12A20D99100C12C56 /* Acronym.swift in Sources */,
 				A03668BA2A22A0F200C12C56 /* UsersFeature.swift in Sources */,
-				A03668642A1FA98500C12C56 /* CounterView.swift in Sources */,
 				A03668992A20984800C12C56 /* AcronymsClient.swift in Sources */,
 				A03668922A2094A500C12C56 /* JSONEncoder+Shared.swift in Sources */,
 				A03668A72A20E05900C12C56 /* Empty.swift in Sources */,
@@ -395,7 +407,6 @@
 				A03668A52A20DA7900C12C56 /* Category.swift in Sources */,
 				A03668622A1FA98500C12C56 /* TILApp_iOSApp.swift in Sources */,
 				A03668C52A23E5A100C12C56 /* AcronymForm.swift in Sources */,
-				A03668852A20877600C12C56 /* NumberFactClient.swift in Sources */,
 				A036689E2A20D97400C12C56 /* URLComponents+Acronyms.swift in Sources */,
 				A03668C72A23E5AE00C12C56 /* AcronymFeature.swift in Sources */,
 			);

@@ -26,7 +26,7 @@ struct AcronymsView: View {
                                 Text(acronym.short)
                                     .font(.headline)
                                     .fontWeight(.bold)
-                                Text("by ") //TODO: Add user details here (need to study
+                                Text("by ") // TODO: Add user details here (need to study
                                     .font(.caption)
                             }
                             
@@ -60,7 +60,8 @@ struct AcronymsView: View {
                     }
                     .navigationDestination(for: AcronymsFeature.State.Destination.self) { destination in
                         switch destination {
-                        //TODO: Approach below works but it is not saving the state, so when we move to other tab it will reset. This probably need to be inside the `AcronymsFeature`. So I need to fix this
+                        // TODO: Approach below works but it is not saving the state, so when we move to other tab it will reset.
+                        // This probably need to be inside the `AcronymsFeature`. So I need to fix this
                         case .edit(let acronym):
                             AcronymForm(store: Store(
                                 initialState: AcronymFeature.State(acronym: acronym),

@@ -20,7 +20,7 @@ struct AcronymForm: View {
                 TextField("Acronym's Long Name", text: viewStore.binding(\.$long))
                 TextField("Users ID", text: viewStore.binding(\.$userID))
                 
-                Button("Save"){
+                Button("Save") {
                     Task {
                         await viewStore.send(.saveTapped).finish()
                         dismiss()

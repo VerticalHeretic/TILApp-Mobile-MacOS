@@ -45,10 +45,7 @@ struct AcronymFeature: ReducerProtocol {
             case .binding:
                 return .none
             case .saveTapped:
-                return .run { [short = state.short,
-                               long = state.long,
-                               userID = state.userID,
-                               acronym = state.acronym] send in
+                return .run { [short = state.short, long = state.long, userID = state.userID, acronym = state.acronym] send in
                     let request = AcronymRequest(
                         short: short,
                         long: long,
@@ -56,7 +53,7 @@ struct AcronymFeature: ReducerProtocol {
                     )
                     
                     if let acronym {
-                        try await send(.acronymResponse(self.acronymClient.update(acronym.id.uuidString,request)))
+                        try await send(.acronymResponse(self.acronymClient.update(acronym.id.uuidString, request)))
                     } else {
                         try await send(.acronymResponse(self.acronymClient.create(request)))
                     }

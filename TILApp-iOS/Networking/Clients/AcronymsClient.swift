@@ -16,11 +16,11 @@ struct AcronymsClient {
     var create: (_ body: AcronymRequest) async throws -> AcronymResponse
     var search: (_ term: String) async throws -> [AcronymResponse]
     var update: (_ id: String, _ body: AcronymRequest) async throws -> AcronymResponse
-    var delete: (_ id: String) async throws -> ()
+    var delete: (_ id: String) async throws -> Void
     var user: (_ id: String) async throws -> UserResponse
     var categories: (_ id: String) async throws -> [CategoryResponse]
-    var addCategory: (_ id: String, _ categoryID: String) async throws -> ()
-    var deleteCategory: (_ id: String, _ categoryID: String) async throws -> ()
+    var addCategory: (_ id: String, _ categoryID: String) async throws -> Void
+    var deleteCategory: (_ id: String, _ categoryID: String) async throws -> Void
 }
 
 extension AcronymsClient: DependencyKey {
