@@ -13,6 +13,7 @@ struct UsersClient {
     var single: (String) async throws -> UserResponse
     var acronyms: (String) async throws -> [AcronymResponse]
     var create: (UserRequest) async throws -> UserResponse
+    var delete: (_ id: String) async throws -> Void
 }
 
 extension UsersClient: DependencyKey {
@@ -28,6 +29,9 @@ extension UsersClient: DependencyKey {
         },
         create: { body in
             return try await URLSession.shared.request(for: .createUser(body: body))
+        },
+        delete: { id in
+            let _: EmptyResponse = try await URLSession.shared.request(for: .deleteUser(id: id))
         }
     )
 }

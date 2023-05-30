@@ -13,15 +13,62 @@ struct CategoriesView: View {
     
     var body: some View {
         WithViewStore(store, observe: { $0 }) { viewStore in
-            List(viewStore.categories) { category in
-                Text(category.name)
-            }
-            .navigationTitle("Categories")
-            .onAppear {
-                if viewStore.categories.isEmpty {
-                    viewStore.send(.fetchCategories)
-                }
-            }
+            NavigationStack(
+                path: viewStore.binding(
+                    get: \.path,
+                    send: CategoriesFeature.Action.navigationPathChanged)) {
+                        List(viewStore.categories) { category in
+                            VStack(alignment: .leading, spacing: 8) {
+                                Text(category.name)
+                                Text(category.id.uuidString)
+                                    .font(.caption)
+                            }
+                            .swipeActions {
+                                Button(role: .destructive) {
+                                    viewStore.send(.deleteCategory(category.id.uuidString))
+                                } label: {
+                                    Label("Delete", systemImage: "trash")
+                                }
+                            }
+                            .onTapGesture {
+                                viewStore.send(.copyButtonTapped(category))
+                            }
+                        }
+                        .navigationTitle("Categories")
+                        .toolbar {
+                            ToolbarItem(placement: .navigationBarTrailing) {
+                                Button {
+                                    viewStore.send(.createCategory)
+                                } label: {
+                                    Image(systemName: "plus")
+                                }
+                            }
+                        }
+                        .onAppear {
+                            if viewStore.categories.isEmpty {
+                                viewStore.send(.fetchCategories)
+                            }
+                        }
+                        .refreshable {
+                            viewStore.send(.fetchCategories)
+                        }
+                        .navigationDestination(for: CategoriesFeature.State.Destination.self) { destination in
+                            switch destination {
+                                // TODO: Approach below works but it is not saving the state, so when we move to other tab it will reset.
+                                // This probably need to be inside the `AcronymsFeature`. So I need to fix this
+                            case .create:
+                                CategoryForm(store: Store(
+                                    initialState: CategoryState(),
+                                    reducer: {
+                                        CategoryFeature()
+                                    }))
+                            }
+                        }
+                        .alert(
+                            self.store.scope(state: \.alert, action: { $0 }),
+                            dismiss: .copyButtonAlertDismissed
+                        )
+                    }
         }
     }
 }

@@ -28,9 +28,10 @@ struct UsersFeature: ReducerProtocol {
     func reduce(into state: inout State, action: Action) -> EffectTask<Action> {
         switch action {
         case .copyButtonTapped(let user):
-            UIPasteboard.general.string = user.id.uuidString
+            let id = user.id.uuidString
+            UIPasteboard.general.string = id
             state.alert = AlertState {
-                TextState("Copied!")
+                TextState("Copied userID: \(id) 🙋🏻‍♀️")
             }
             return .none
         case .copyButtonAlertDismissed:

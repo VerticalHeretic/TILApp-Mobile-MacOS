@@ -35,7 +35,7 @@ struct AcronymsView: View {
                         }
                         .swipeActions {
                             Button(role: .destructive) {
-                                viewStore.send(.deleteAcronym(acronym.id.description))
+                                viewStore.send(.deleteAcronym(acronym.id.uuidString))
                             } label: {
                                 Label("Delete", systemImage: "trash")
                             }

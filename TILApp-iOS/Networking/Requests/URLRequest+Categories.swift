@@ -23,4 +23,9 @@ extension URLRequest {
             .add(body: body)
             .add(headers: ["Content-Type": "application/json"])
     }
+    
+    static func deleteCategory(id: String) -> Self {
+        Self(components: .category(id: id))
+            .add(httpMethod: .delete)
+    }
 }
