@@ -35,13 +35,14 @@ struct AcronymsFeature: ReducerProtocol {
     
     enum Action: Equatable {
         case fetchAcronyms
-        case acronymsResponse([AcronymResponse])
         case searchAcronyms(String)
         case deleteAcronym(String)
-        case deleteResponse(String)
         case editAcronym(AcronymResponse)
         case createAcronym
         case navigationPathChanged([State.Destination])
+        
+        case acronymsResponse([AcronymResponse])
+        case deleteResponse(String)
     }
     
     @Dependency(\.acronymsClient) var acronymClient
@@ -59,15 +60,8 @@ struct AcronymsFeature: ReducerProtocol {
                     try await self.acronymClient.delete(id)
                     await send(.deleteResponse(id))
                 }
-            case .deleteResponse(let id):
-                state.acronyms.removeAll(where: { $0.id.uuidString == id })
-                return .none
             case .searchAcronyms(let term):
                 state.searchTerm = term
-                return .none
-            case .acronymsResponse(let acronyms):
-                state.acronyms = acronyms
-                state.isLoading = false
                 return .none
             case .editAcronym(let acronym):
                 state.path.append(.edit(acronym))
@@ -77,6 +71,13 @@ struct AcronymsFeature: ReducerProtocol {
                 return .none
             case let .navigationPathChanged(path):
                 state.path = path
+                return .none
+            case .acronymsResponse(let acronyms):
+                state.acronyms = acronyms
+                state.isLoading = false
+                return .none
+            case .deleteResponse(let id):
+                state.acronyms.removeAll(where: { $0.id.uuidString == id })
                 return .none
             }
         }

@@ -13,33 +13,61 @@ struct UsersView: View {
     
     var body: some View {
         WithViewStore(store, observe: { $0 }) { viewStore in
-            List(viewStore.users) { user in
-                VStack(alignment: .leading, spacing: 8) {
-                    HStack {
-                        Text(user.name)
-                            .font(.headline)
-                        Text("-")
-                            .font(.headline)
-                        Text(user.username)
-                            .font(.headline)
+            NavigationStack(
+                path: viewStore.binding(
+                    get: \.path,
+                    send: UsersFeature.Action.navigationPathChanged)
+            ) {
+                List(viewStore.users) { user in
+                    VStack(alignment: .leading, spacing: 8) {
+                        HStack {
+                            Text(user.name)
+                                .font(.headline)
+                            Text("-")
+                                .font(.headline)
+                            Text(user.username)
+                                .font(.headline)
+                        }
+                        Text(user.id.uuidString)
+                            .font(.caption)
                     }
-                    Text(user.id.uuidString)
-                        .font(.caption)
+                    .onTapGesture {
+                        viewStore.send(.copyButtonTapped(user))
+                    }
+                    .swipeActions {
+                        Button(role: .destructive) {
+                            viewStore.send(.deleteUser(user.id.uuidString))
+                        } label: {
+                            Label("Delete", systemImage: "trash")
+                        }
+                    }
                 }
-                .onTapGesture {
-                    viewStore.send(.copyButtonTapped(user))
+                .navigationTitle("Users")
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button {
+                            viewStore.send(.createUser)
+                        } label: {
+                            Image(systemName: "plus")
+                        }
+                    }
                 }
-            }
-            .navigationTitle("Users")
-            .onAppear {
-                if viewStore.users.isEmpty {
+                .navigationDestination(for: UsersFeature.State.Destination.self) { destination in
+                    
+                }
+                .onAppear {
+                    if viewStore.users.isEmpty {
+                        viewStore.send(.fetchUsers)
+                    }
+                }
+                .alert(
+                    self.store.scope(state: \.alert, action: { $0 }),
+                    dismiss: .copyButtonAlertDismissed
+                )
+                .refreshable {
                     viewStore.send(.fetchUsers)
                 }
             }
-            .alert(
-                self.store.scope(state: \.alert, action: { $0 }),
-                dismiss: .copyButtonAlertDismissed
-            )
         }
     }
 }
