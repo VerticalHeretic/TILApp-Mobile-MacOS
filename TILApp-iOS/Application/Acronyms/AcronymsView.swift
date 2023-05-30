@@ -26,12 +26,24 @@ struct AcronymsView: View {
                                 Text(acronym.short)
                                     .font(.headline)
                                     .fontWeight(.bold)
-                                Text("by ") // TODO: Add user details here (need to study
+                                Text("by")
+                                Text(acronym.user.username)
                                     .font(.caption)
+                                    .fontWeight(.bold)
+                                    .foregroundColor(.accentColor)
                             }
                             
                             Text(acronym.long)
                                 .font(.caption)
+                            
+                            ForEach(acronym.categories) { category in
+                                Text(category.name)
+                                    .foregroundColor(Color.white)
+                                    .font(.caption)
+                                    .padding(4)
+                                    .background(Color.accentColor)
+                                    .cornerRadius(10)
+                            }
                         }
                         .swipeActions {
                             Button(role: .destructive) {

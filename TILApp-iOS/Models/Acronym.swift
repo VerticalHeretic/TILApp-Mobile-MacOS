@@ -11,11 +11,8 @@ struct AcronymResponse: Codable, Equatable, Identifiable, Hashable {
     let id: UUID
     let short: String
     let long: String
-    let user: AcronymUser
-}
-
-struct AcronymUser: Codable, Equatable, Identifiable, Hashable {
-    let id: UUID
+    let user: UserResponse
+    let categories: [CategoryResponse]
 }
 
 struct AcronymRequest: Codable, Hashable {
