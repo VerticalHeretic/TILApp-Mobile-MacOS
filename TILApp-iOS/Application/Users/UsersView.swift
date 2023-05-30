@@ -53,7 +53,13 @@ struct UsersView: View {
                     }
                 }
                 .navigationDestination(for: UsersFeature.State.Destination.self) { destination in
-                    
+                   
+                    switch destination {
+                    case .create:
+                        UserForm(store: Store(initialState: UserState(), reducer: {
+                            UserFeature()
+                        }))
+                    }
                 }
                 .onAppear {
                     if viewStore.users.isEmpty {

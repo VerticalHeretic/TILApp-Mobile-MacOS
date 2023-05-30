@@ -42,6 +42,8 @@
 		A0FF825A2A253330004EB447 /* URLRequest+Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FF82592A253330004EB447 /* URLRequest+Categories.swift */; };
 		A0FF825F2A262262004EB447 /* CategoryFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FF825E2A262262004EB447 /* CategoryFeature.swift */; };
 		A0FF82612A26258C004EB447 /* CategoryForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FF82602A26258C004EB447 /* CategoryForm.swift */; };
+		A0FF82642A265812004EB447 /* UserFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FF82632A265812004EB447 /* UserFeature.swift */; };
+		A0FF82662A2659C8004EB447 /* UserForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FF82652A2659C8004EB447 /* UserForm.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +94,8 @@
 		A0FF82592A253330004EB447 /* URLRequest+Categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+Categories.swift"; sourceTree = "<group>"; };
 		A0FF825E2A262262004EB447 /* CategoryFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryFeature.swift; sourceTree = "<group>"; };
 		A0FF82602A26258C004EB447 /* CategoryForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryForm.swift; sourceTree = "<group>"; };
+		A0FF82632A265812004EB447 /* UserFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFeature.swift; sourceTree = "<group>"; };
+		A0FF82652A2659C8004EB447 /* UserForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserForm.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -250,6 +254,7 @@
 		A03668B72A22A0DD00C12C56 /* Users */ = {
 			isa = PBXGroup;
 			children = (
+				A0FF82622A2657FD004EB447 /* UserForm */,
 				A03668B92A22A0F200C12C56 /* UsersFeature.swift */,
 				A03668C12A22A2CB00C12C56 /* UsersView.swift */,
 			);
@@ -282,6 +287,15 @@
 				A0FF82602A26258C004EB447 /* CategoryForm.swift */,
 			);
 			path = CategoryForm;
+			sourceTree = "<group>";
+		};
+		A0FF82622A2657FD004EB447 /* UserForm */ = {
+			isa = PBXGroup;
+			children = (
+				A0FF82632A265812004EB447 /* UserFeature.swift */,
+				A0FF82652A2659C8004EB447 /* UserForm.swift */,
+			);
+			path = UserForm;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -420,6 +434,7 @@
 				A03668A12A20D99100C12C56 /* Acronym.swift in Sources */,
 				A03668BA2A22A0F200C12C56 /* UsersFeature.swift in Sources */,
 				A03668992A20984800C12C56 /* AcronymsClient.swift in Sources */,
+				A0FF82662A2659C8004EB447 /* UserForm.swift in Sources */,
 				A03668922A2094A500C12C56 /* JSONEncoder+Shared.swift in Sources */,
 				A0FF82542A253271004EB447 /* CategoriesView.swift in Sources */,
 				A0FF82612A26258C004EB447 /* CategoryForm.swift in Sources */,
@@ -437,6 +452,7 @@
 				A03668C22A22A2CB00C12C56 /* UsersView.swift in Sources */,
 				A03668AF2A20E34D00C12C56 /* Root.swift in Sources */,
 				A03668BC2A22A16C00C12C56 /* UsersClient.swift in Sources */,
+				A0FF82642A265812004EB447 /* UserFeature.swift in Sources */,
 				A03668BE2A22A17700C12C56 /* URLComponents+Users.swift in Sources */,
 				A03668AD2A20E2A800C12C56 /* RootView.swift in Sources */,
 				A036688C2A20920900C12C56 /* URLRequest+Builder.swift in Sources */,
