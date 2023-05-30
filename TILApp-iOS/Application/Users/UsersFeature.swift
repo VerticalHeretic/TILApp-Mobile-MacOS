@@ -14,12 +14,22 @@ struct UsersFeature: ReducerProtocol {
         var isLoading = false
         var alert: AlertState<Action>?
         var users: [UserResponse] = []
+        var path: [Destination] = []
+        
+        enum Destination: Equatable, Hashable {
+            case create
+        }
     }
     
     enum Action: Equatable {
         case copyButtonTapped(UserResponse)
         case copyButtonAlertDismissed
         case fetchUsers
+        case createUser
+        case deleteUser(String)
+        case navigationPathChanged([State.Destination])
+        
+        case deleteResponse(String)
         case usersResponse([UserResponse])
     }
     
@@ -42,6 +52,20 @@ struct UsersFeature: ReducerProtocol {
             return .run { send in
                 try await send(.usersResponse(self.usersClient.all()))
             }
+        case .deleteUser(let id):
+            return .run { send in
+                try await self.usersClient.delete(id)
+                await send(.deleteResponse(id))
+            }
+        case .createUser:
+            state.path.append(.create)
+            return .none
+        case let .navigationPathChanged(path):
+            state.path = path
+            return .none
+        case .deleteResponse(let id):
+            state.users.removeAll(where: { $0.id.uuidString == id })
+            return .none
         case .usersResponse(let users):
             state.users = users
             state.isLoading = false
