@@ -58,6 +58,13 @@ struct AcronymsView: View {
                                 Label("Edit", systemImage: "pencil")
                             }
                             .tint(.accentColor)
+                            
+                            Button {
+                                viewStore.send(.addCategory(acronym.id.uuidString))
+                            } label: {
+                                Label("Add Category", systemImage: "tag.fill")
+                            }
+                            .tint(Color.green)
                         }
                     }
                     .navigationTitle("Acronyms")
