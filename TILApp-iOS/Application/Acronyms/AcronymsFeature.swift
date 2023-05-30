@@ -60,7 +60,7 @@ struct AcronymsFeature: ReducerProtocol {
                     await send(.deleteResponse(id))
                 }
             case .deleteResponse(let id):
-                state.acronyms.removeAll(where: { $0.id.description == id })
+                state.acronyms.removeAll(where: { $0.id.uuidString == id })
                 return .none
             case .searchAcronyms(let term):
                 state.searchTerm = term

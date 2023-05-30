@@ -12,6 +12,7 @@ struct CategoriesClient {
     var all: () async throws -> [CategoryResponse]
     var single: (String) async throws -> CategoryResponse
     var create: (CategoryRequest) async throws -> CategoryResponse
+    var delete: (_ id: String) async throws -> Void
 }
 
 extension CategoriesClient: DependencyKey {
@@ -24,6 +25,9 @@ extension CategoriesClient: DependencyKey {
         },
         create: { body in
             return try await URLSession.shared.request(for: .createCategory(body: body))
+        },
+        delete: { id in
+            let _: EmptyResponse  = try await URLSession.shared.request(for: .deleteCategory(id: id))
         }
     )
 }

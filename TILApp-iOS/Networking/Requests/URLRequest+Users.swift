@@ -27,4 +27,9 @@ extension URLRequest {
             .add(body: body)
             .add(headers: ["Content-Type": "application/json"])
     }
+    
+    static func deleteUser(id: String) -> Self {
+        Self(components: .user(id: id))
+            .add(httpMethod: .delete)
+    }
 }

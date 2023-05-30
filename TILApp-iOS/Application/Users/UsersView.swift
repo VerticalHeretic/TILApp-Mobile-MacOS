@@ -23,14 +23,14 @@ struct UsersView: View {
                         Text(user.username)
                             .font(.headline)
                     }
-                    Text(user.id.description)
+                    Text(user.id.uuidString)
                         .font(.caption)
                 }
                 .onTapGesture {
                     viewStore.send(.copyButtonTapped(user))
                 }
-                .navigationTitle("Users")
             }
+            .navigationTitle("Users")
             .onAppear {
                 if viewStore.users.isEmpty {
                     viewStore.send(.fetchUsers)
