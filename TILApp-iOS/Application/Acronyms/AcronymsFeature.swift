@@ -5,7 +5,7 @@
 //  Created by Łukasz Stachnik on 26/05/2023.
 //
 
-import Foundation
+import SwiftUI
 import ComposableArchitecture
 
 struct AcronymsFeature: ReducerProtocol {
@@ -39,6 +39,8 @@ struct AcronymsFeature: ReducerProtocol {
         case deleteAcronym(String)
         case editAcronym(AcronymResponse)
         case createAcronym
+        case addCategory(_ acronymId: String)
+        case categoryAdded
         case navigationPathChanged([State.Destination])
         
         case acronymsResponse([AcronymResponse])
@@ -68,6 +70,16 @@ struct AcronymsFeature: ReducerProtocol {
                 return .none
             case .createAcronym:
                 state.path.append(.create)
+                return .none
+            case .addCategory(let acronymID):
+                state.isLoading = true
+                return .run { send in
+                    guard let categoryID = UIPasteboard.general.string else { return }
+                    try await self.acronymClient.addCategory(acronymID, categoryID)
+                    await send(.categoryAdded)
+                }
+            case .categoryAdded:
+                state.isLoading = false
                 return .none
             case let .navigationPathChanged(path):
                 state.path = path
