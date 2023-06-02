@@ -40,17 +40,20 @@ extension URLRequest {
     static func addCategoryToAcronym(id: String, categoryID: String) -> Self {
         Self(components: .acronymModifyCategory(id: id, categoryID: categoryID))
             .add(httpMethod: .post)
+            .add(headers: ["Authorization": "Bearer \(Auth.shared.token ?? "")"])
     }
     
     static func deleteCategoryFromAcronym(id: String, categoryID: String) -> Self {
         Self(components: .acronymModifyCategory(id: id, categoryID: categoryID))
             .add(httpMethod: .delete)
+            .add(headers: ["Authorization": "Bearer \(Auth.shared.token ?? "")"])
     }
     
     static func createAcronym(body: AcronymRequest) -> Self {
         Self(components: .acronyms)
             .add(httpMethod: .post)
             .add(body: body)
+            .add(headers: ["Authorization": "Bearer \(Auth.shared.token ?? "")"])
             .add(headers: ["Content-Type": "application/json"])
     }
     
@@ -58,12 +61,14 @@ extension URLRequest {
         Self(components: .acronym(id: id))
             .add(httpMethod: .put)
             .add(body: body)
+            .add(headers: ["Authorization": "Bearer \(Auth.shared.token ?? "")"])
             .add(headers: ["Content-Type": "application/json"])
     }
     
     static func deleteAcronym(id: String) -> Self {
         Self(components: .acronym(id: id))
             .add(httpMethod: .delete)
+            .add(headers: ["Authorization": "Bearer \(Auth.shared.token ?? "")"])
     }
     
 }

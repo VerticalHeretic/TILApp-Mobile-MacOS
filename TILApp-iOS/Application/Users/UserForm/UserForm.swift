@@ -16,7 +16,11 @@ struct UserForm: View {
         WithViewStore(self.store, observe: { $0 }) { viewStore in
             Form {
                 TextField("User's name", text: viewStore.binding(\.$name))
+                    .textContentType(.name)
                 TextField("User's username", text: viewStore.binding(\.$username))
+                    .textContentType(.username)
+                SecureField("User's password", text: viewStore.binding(\.$password))
+                    .textContentType(.newPassword)
                 
                 Button("Save") {
                     Task {

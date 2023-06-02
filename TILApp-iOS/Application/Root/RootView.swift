@@ -14,32 +14,38 @@ struct RootView: View {
     var body: some View {
         WithViewStore(
             store,
-            observe: { (selectedTab: $0.selectedTab, acronymsCount: $0.acronyms.acronyms.count) },
+            observe: { (selectedTab: $0.selectedTab, acronymsCount: $0.acronyms.acronyms.count, isAuthenthicated: $0.isAuthenthicated) },
             removeDuplicates: ==
         ) { viewStore in
-            TabView(selection: viewStore.binding(get: \.selectedTab, send: Root.Action.selectedTabChange)) {
-                AcronymsView(store: self.store.scope(state: \.acronyms,
-                                                     action: Root.Action.acronyms))
-                .tag(Root.State.Tab.acronyms)
-                .tabItem {
-                    Label("Acronyms", systemImage: "text.quote")
+            if viewStore.isAuthenthicated {
+                TabView(selection: viewStore.binding(get: \.selectedTab, send: Root.Action.selectedTabChange)) {
+                    AcronymsView(store: self.store.scope(state: \.acronyms,
+                                                         action: Root.Action.acronyms))
+                    .tag(Root.State.Tab.acronyms)
+                    .tabItem {
+                        Label("Acronyms", systemImage: "text.quote")
+                    }
+                    .badge(viewStore.state.acronymsCount)
+                    
+                    UsersView(store: self.store.scope(state: \.users,
+                                                      action: Root.Action.users))
+                    .tag(Root.State.Tab.users)
+                    .tabItem {
+                        Label("Users", systemImage: "person.fill")
+                    }
+                    
+                    CategoriesView(store: self.store.scope(state: \.categories,
+                                                           action: Root.Action.categories))
+                    .tag(Root.State.Tab.categories)
+                    .tabItem {
+                        Label("Categories", systemImage: "tag.fill")
+                    }
                 }
-                .badge(viewStore.state.acronymsCount)
-                
-                UsersView(store: self.store.scope(state: \.users,
-                                                  action: Root.Action.users))
-                .tag(Root.State.Tab.users)
-                .tabItem {
-                    Label("Users", systemImage: "person.fill")
-                }
-                
-                CategoriesView(store: self.store.scope(state: \.categories,
-                                                       action: Root.Action.categories))
-                .tag(Root.State.Tab.categories)
-                .tabItem {
-                    Label("Categories", systemImage: "tag.fill")
-                }
+            } else {
+                LoginView(store: self.store.scope(state: \.loginState,
+                                                  action: Root.Action.login))
             }
+
         }
     }
 }

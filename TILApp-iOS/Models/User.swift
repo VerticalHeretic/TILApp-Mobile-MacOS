@@ -16,4 +16,5 @@ struct UserResponse: Codable, Equatable, Identifiable, Hashable {
 struct UserRequest: Codable, Hashable {
     let name: String
     let username: String
+    let password: String
 }

@@ -11,6 +11,7 @@ import ComposableArchitecture
 struct UserState: Equatable {
     @BindingState var name: String = ""
     @BindingState var username: String = ""
+    @BindingState var password: String = ""
 }
 
 struct UserFeature: ReducerProtocol {
@@ -32,12 +33,12 @@ struct UserFeature: ReducerProtocol {
             case .binding:
                 return .none
             case .saveTapped:
-                return .run { [name = state.name, username = state.username] send in
-                    let request = UserRequest(name: name, username: username)
+                return .run { [name = state.name, username = state.username, password = state.password] send in
+                    let request = UserRequest(name: name, username: username, password: password)
                     
-                    try await send(.userResponse(self.usersClient.create(request)))
+                    try await send(.userResponse(self.usersClient.register(request)))
                 }
-            case .userResponse(let user):
+            case .userResponse:
                 return .none
             }
         }

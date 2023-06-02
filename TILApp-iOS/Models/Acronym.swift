@@ -18,5 +18,4 @@ struct AcronymResponse: Codable, Equatable, Identifiable, Hashable {
 struct AcronymRequest: Codable, Hashable {
     let short: String
     let long: String
-    let userID: String
 }

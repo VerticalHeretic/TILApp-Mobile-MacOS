@@ -76,23 +76,23 @@ struct AcronymsView: View {
                                 Image(systemName: "plus")
                             }
                         }
+                        
+                        ToolbarItem(placement: .navigationBarLeading) {
+                            Button {
+                                viewStore.send(.logout)
+                            } label: {
+                                Image(systemName: "rectangle.portrait.and.arrow.right")
+                            }
+                        }
                     }
                     .navigationDestination(for: AcronymsFeature.State.Destination.self) { destination in
                         switch destination {
-                        // TODO: Approach below works but it is not saving the state, so when we move to other tab it will reset.
-                        // This probably need to be inside the `AcronymsFeature`. So I need to fix this
-                        case .edit(let acronym):
-                            AcronymForm(store: Store(
-                                initialState: AcronymFeature.State(acronym: acronym),
-                                reducer: {
-                                    AcronymFeature()
-                                }))
+                        case .edit:
+                            AcronymForm(store: self.store.scope(state: \.acronymState,
+                                                                action: AcronymsFeature.Action.acronym))
                         case .create:
-                            AcronymForm(store: Store(
-                                initialState: AcronymFeature.State(),
-                                reducer: {
-                                    AcronymFeature()
-                                }))
+                            AcronymForm(store: self.store.scope(state: \.acronymState,
+                                                                action: AcronymsFeature.Action.acronym))
                         }
                     }
                     

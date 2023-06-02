@@ -18,7 +18,6 @@ struct AcronymForm: View {
                 TextField("Acronym's Short Name", text: viewStore.binding(\.$short))
                     .autocorrectionDisabled()
                 TextField("Acronym's Long Name", text: viewStore.binding(\.$long))
-                TextField("Users ID", text: viewStore.binding(\.$userID))
                 
                 Button("Save") {
                     Task {

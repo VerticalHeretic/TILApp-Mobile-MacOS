@@ -20,4 +20,8 @@ extension URLComponents {
     static func usersAcronyms(id: String) -> Self {
         return Self(path: "/api/users/\(id)/acronyms")
     }
+
+    static var login: Self {
+        return Self(path: "/api/users/login")
+    }
 }

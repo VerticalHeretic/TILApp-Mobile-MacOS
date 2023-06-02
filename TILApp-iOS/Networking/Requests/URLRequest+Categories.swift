@@ -21,11 +21,13 @@ extension URLRequest {
         Self(components: .categories)
             .add(httpMethod: .post)
             .add(body: body)
+            .add(headers: ["Authorization": "Bearer \(Auth.shared.token ?? "")"])
             .add(headers: ["Content-Type": "application/json"])
     }
     
     static func deleteCategory(id: String) -> Self {
         Self(components: .category(id: id))
             .add(httpMethod: .delete)
+            .add(headers: ["Authorization": "Bearer \(Auth.shared.token ?? "")"])
     }
 }

@@ -44,7 +44,8 @@ extension AcronymsClient: DependencyKey {
             try await URLSession.shared.request(for: .searchAcronyms(term: term))
         },
         update: { id, body in
-            try await URLSession.shared.request(for: .updateAcronym(id: id, body: body))        },
+            try await URLSession.shared.request(for: .updateAcronym(id: id, body: body))
+        },
         delete: { id in
             let _: EmptyResponse = try await URLSession.shared.request(for: .deleteAcronym(id: id))
         },

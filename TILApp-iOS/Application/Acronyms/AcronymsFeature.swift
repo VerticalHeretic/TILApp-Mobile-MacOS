@@ -8,30 +8,33 @@
 import SwiftUI
 import ComposableArchitecture
 
-struct AcronymsFeature: ReducerProtocol {
+struct AcronymsState: Equatable {
+    var isLoading = false
+    var acronyms: [AcronymResponse] = []
+    var path: [Destination] = []
+    var searchTerm = ""
+    var acronymState = AcronymFeature.State()
     
-    struct State: Equatable {
-        var isLoading = false
-        var acronyms: [AcronymResponse] = []
-        var path: [Destination] = []
-        var searchTerm = ""
-        
-        enum Destination: Equatable, Hashable {
-            case edit(AcronymResponse)
-            case create
-        }
-        
-        var searchResults: [AcronymResponse] {
-            if searchTerm.isEmpty {
-                return acronyms
-            } else {
-                return acronyms.filter {
-                    $0.long.lowercased().contains(searchTerm.lowercased()) ||
-                    $0.short.lowercased().contains(searchTerm.lowercased())
-                }
+    enum Destination: Equatable, Hashable {
+        case edit
+        case create
+    }
+    
+    var searchResults: [AcronymResponse] {
+        if searchTerm.isEmpty {
+            return acronyms
+        } else {
+            return acronyms.filter {
+                $0.long.lowercased().contains(searchTerm.lowercased()) ||
+                $0.short.lowercased().contains(searchTerm.lowercased())
             }
         }
     }
+}
+
+struct AcronymsFeature: ReducerProtocol {
+    
+    typealias State = AcronymsState
     
     enum Action: Equatable {
         case fetchAcronyms
@@ -42,6 +45,8 @@ struct AcronymsFeature: ReducerProtocol {
         case addCategory(_ acronymId: String)
         case categoryAdded
         case navigationPathChanged([State.Destination])
+        case acronym(AcronymFeature.Action)
+        case logout
         
         case acronymsResponse([AcronymResponse])
         case deleteResponse(String)
@@ -52,6 +57,9 @@ struct AcronymsFeature: ReducerProtocol {
     var body: some ReducerProtocol<State, Action> {
         Reduce { state, action in
             switch action {
+            case .acronym(.acronymResponse(let acronym)):
+                state.acronyms.append(acronym)
+                return .none
             case .fetchAcronyms:
                 state.isLoading = true
                 return .run { send in
@@ -66,9 +74,11 @@ struct AcronymsFeature: ReducerProtocol {
                 state.searchTerm = term
                 return .none
             case .editAcronym(let acronym):
-                state.path.append(.edit(acronym))
+                state.acronymState = AcronymState(acronym: acronym)
+                state.path.append(.edit)
                 return .none
             case .createAcronym:
+                state.acronymState = AcronymState()
                 state.path.append(.create)
                 return .none
             case .addCategory(let acronymID):
@@ -91,7 +101,13 @@ struct AcronymsFeature: ReducerProtocol {
             case .deleteResponse(let id):
                 state.acronyms.removeAll(where: { $0.id.uuidString == id })
                 return .none
+            default:
+                return .none
             }
+        }
+        
+        Scope(state: \.acronymState, action: /Action.acronym) {
+            AcronymFeature()
         }
     }
 }

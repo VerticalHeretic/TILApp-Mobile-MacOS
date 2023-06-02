@@ -21,7 +21,7 @@ extension URLRequest {
         Self(components: .usersAcronyms(id: id))
     }
     
-    static func createUser(body: UserRequest) -> Self {
+    static func register(body: UserRequest) -> Self {
         Self(components: .users)
             .add(httpMethod: .post)
             .add(body: body)
@@ -31,5 +31,16 @@ extension URLRequest {
     static func deleteUser(id: String) -> Self {
         Self(components: .user(id: id))
             .add(httpMethod: .delete)
+    }
+    
+    static func login(credentials: LoginData) -> Self {
+        guard let loginString = credentials.loginString else {
+            fatalError("Failed to encode credentials")
+        }
+        
+        return Self(components: .login)
+            .add(headers: ["Authorization": "Basic \(loginString)"])
+            .add(httpMethod: .post)
+         
     }
 }
