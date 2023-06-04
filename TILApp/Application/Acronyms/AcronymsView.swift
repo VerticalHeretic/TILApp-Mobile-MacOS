@@ -69,6 +69,7 @@ struct AcronymsView: View {
                     }
                     .navigationTitle("Acronyms")
                     .toolbar {
+                        #if os(iOS)
                         ToolbarItem(placement: .navigationBarTrailing) {
                             Button {
                                 viewStore.send(.createAcronym)
@@ -84,6 +85,9 @@ struct AcronymsView: View {
                                 Image(systemName: "rectangle.portrait.and.arrow.right")
                             }
                         }
+                        #else
+                        
+                        #endif
                     }
                     .navigationDestination(for: AcronymsFeature.State.Destination.self) { destination in
                         switch destination {

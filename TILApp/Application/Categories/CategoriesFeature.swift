@@ -39,7 +39,11 @@ struct CategoriesFeature: ReducerProtocol {
         switch action {
         case .copyButtonTapped(let category):
             let id = category.id.uuidString
+            #if os(iOS)
             UIPasteboard.general.string = id
+            #else
+            NSPasteboard.general.setString(id, forType: .string)
+            #endif
             state.alert = AlertState {
                 TextState("Copied categoryID: \(id) 🏷️")
             }

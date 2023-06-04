@@ -44,6 +44,7 @@ struct UsersView: View {
                 }
                 .navigationTitle("Users")
                 .toolbar {
+                    #if os(iOS)
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button {
                             viewStore.send(.createUser)
@@ -51,6 +52,7 @@ struct UsersView: View {
                             Image(systemName: "plus")
                         }
                     }
+                    #endif
                 }
                 .navigationDestination(for: UsersFeature.State.Destination.self) { destination in
                    

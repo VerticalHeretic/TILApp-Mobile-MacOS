@@ -36,6 +36,7 @@ struct CategoriesView: View {
                         }
                         .navigationTitle("Categories")
                         .toolbar {
+                            #if os(iOS)
                             ToolbarItem(placement: .navigationBarTrailing) {
                                 Button {
                                     viewStore.send(.createCategory)
@@ -43,6 +44,7 @@ struct CategoriesView: View {
                                     Image(systemName: "plus")
                                 }
                             }
+                            #endif
                         }
                         .onAppear {
                             if viewStore.categories.isEmpty {

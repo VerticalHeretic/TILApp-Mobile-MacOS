@@ -17,7 +17,7 @@ struct LoginView: View {
         WithViewStore(store, observe: { $0 }) { viewStore in
             NavigationStack {
                 VStack(alignment: .center) {
-                    
+                    #if os(iOS)
                     TextField("Username", text: viewStore.binding(\.$username))
                         .autocorrectionDisabled()
                         .textInputAutocapitalization(.never)
@@ -28,7 +28,12 @@ struct LoginView: View {
                     SecureField("Password", text: viewStore.binding(\.$password))
                         .frame(minWidth: 100, maxWidth: 250)
                         .textFieldStyle(.roundedBorder)
-                    
+                    #else
+                    TextField("Username", text: viewStore.binding(\.$username))
+                        .autocorrectionDisabled()
+                    SecureField("Password", text: viewStore.binding(\.$password))
+                        
+                    #endif
                     Button("LOGIN") {
                         Task {
                             await viewStore.send(.loginTapped).finish()

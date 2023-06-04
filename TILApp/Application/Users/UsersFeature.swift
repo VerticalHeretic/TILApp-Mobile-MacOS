@@ -39,7 +39,13 @@ struct UsersFeature: ReducerProtocol {
         switch action {
         case .copyButtonTapped(let user):
             let id = user.id.uuidString
+            
+            #if os(macOS)
+            NSPasteboard.general.setString(id, forType: .string)
+            #else
             UIPasteboard.general.string = id
+            #endif
+            
             state.alert = AlertState {
                 TextState("Copied userID: \(id) 🙋🏻‍♀️")
             }

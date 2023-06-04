@@ -84,9 +84,15 @@ struct AcronymsFeature: ReducerProtocol {
             case .addCategory(let acronymID):
                 state.isLoading = true
                 return .run { send in
+                    #if os(macOS)
+                    guard let categoryID = NSPasteboard.general.string(forType: .string) else { return }
+                    try await self.acronymClient.addCategory(acronymID, categoryID)
+                    await send(.categoryAdded)
+                    #else
                     guard let categoryID = UIPasteboard.general.string else { return }
                     try await self.acronymClient.addCategory(acronymID, categoryID)
                     await send(.categoryAdded)
+                    #endif
                 }
             case .categoryAdded:
                 state.isLoading = false
