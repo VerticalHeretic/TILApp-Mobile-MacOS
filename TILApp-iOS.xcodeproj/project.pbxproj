@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A02FA6652A2C6DE600D76428 /* URL+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02FA6642A2C6DE600D76428 /* URL+Extensions.swift */; };
 		A03668622A1FA98500C12C56 /* TILApp_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03668612A1FA98500C12C56 /* TILApp_iOSApp.swift */; };
 		A03668662A1FA98700C12C56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A03668652A1FA98700C12C56 /* Assets.xcassets */; };
 		A03668692A1FA98700C12C56 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A03668682A1FA98700C12C56 /* Preview Assets.xcassets */; };
@@ -63,6 +64,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A02FA6642A2C6DE600D76428 /* URL+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extensions.swift"; sourceTree = "<group>"; };
 		A036685E2A1FA98500C12C56 /* TILApp-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TILApp-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A03668612A1FA98500C12C56 /* TILApp_iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TILApp_iOSApp.swift; sourceTree = "<group>"; };
 		A03668652A1FA98700C12C56 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -301,6 +303,7 @@
 			children = (
 				A077379B2A28D74E0014E604 /* Keychain.swift */,
 				A077379D2A28D7770014E604 /* Auth.swift */,
+				A02FA6642A2C6DE600D76428 /* URL+Extensions.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -499,6 +502,7 @@
 				A03668A52A20DA7900C12C56 /* Category.swift in Sources */,
 				A03668622A1FA98500C12C56 /* TILApp_iOSApp.swift in Sources */,
 				A03668C52A23E5A100C12C56 /* AcronymForm.swift in Sources */,
+				A02FA6652A2C6DE600D76428 /* URL+Extensions.swift in Sources */,
 				A036689E2A20D97400C12C56 /* URLComponents+Acronyms.swift in Sources */,
 				A03668C72A23E5AE00C12C56 /* AcronymFeature.swift in Sources */,
 			);

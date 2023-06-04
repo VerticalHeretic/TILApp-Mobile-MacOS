@@ -33,7 +33,6 @@ struct LoginFeature: ReducerProtocol {
             case .binding:
                 return .none
             case .loginTapped:
-                debugPrint("Login")
                 return .run { [password = state.password, username = state.username] send in
                     do {
                         try await self.userClient.login(.init(username: username, password: password))
