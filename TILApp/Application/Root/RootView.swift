@@ -18,34 +18,70 @@ struct RootView: View {
             removeDuplicates: ==
         ) { viewStore in
             if viewStore.isAuthenthicated {
-                TabView(selection: viewStore.binding(get: \.selectedTab, send: Root.Action.selectedTabChange)) {
-                    AcronymsView(store: self.store.scope(state: \.acronyms,
-                                                         action: Root.Action.acronyms))
-                    .tag(Root.State.Tab.acronyms)
-                    .tabItem {
-                        Label("Acronyms", systemImage: "text.quote")
-                    }
-                    .badge(viewStore.state.acronymsCount)
-                    
-                    UsersView(store: self.store.scope(state: \.users,
-                                                      action: Root.Action.users))
-                    .tag(Root.State.Tab.users)
-                    .tabItem {
-                        Label("Users", systemImage: "person.fill")
-                    }
-                    
-                    CategoriesView(store: self.store.scope(state: \.categories,
-                                                           action: Root.Action.categories))
-                    .tag(Root.State.Tab.categories)
-                    .tabItem {
-                        Label("Categories", systemImage: "tag.fill")
-                    }
-                }
+                #if os(iOS)
+                buildiOSUI(viewStore: viewStore)
+                #else
+                buildMacUI(viewStore: viewStore)
+                #endif
             } else {
                 LoginView(store: self.store.scope(state: \.loginState,
                                                   action: Root.Action.login))
             }
-
+        }
+    }
+    
+    @ViewBuilder private func buildMacUI(viewStore: ViewStore<(selectedTab: Root.State.Tab, acronymsCount: Int, isAuthenthicated: Bool), Root.Action>) -> some View {
+        NavigationSplitView {
+            #if os(macOS)
+            List(Root.State.Tab.allCases, selection: viewStore.binding(get: \.selectedTab, send: Root.Action.selectedTabChange)) { tab in
+                NavigationLink(tab.rawValue, value: tab)
+            }
+            #endif
+        } detail: {
+            switch viewStore.state.selectedTab {
+            case .acronyms:
+                buildAcronymsView(viewStore: viewStore)
+            case .users:
+                buildUsersView(viewStore: viewStore)
+            case .categories:
+                buildCategoriesView(viewStore: viewStore)
+            }
+        }
+    }
+    
+    @ViewBuilder private func buildiOSUI(viewStore: ViewStore<(selectedTab: Root.State.Tab, acronymsCount: Int, isAuthenthicated: Bool), Root.Action>) -> some View {
+        TabView(selection: viewStore.binding(get: \.selectedTab, send: Root.Action.selectedTabChange)) {
+            buildAcronymsView(viewStore: viewStore)
+            buildUsersView(viewStore: viewStore)
+            buildCategoriesView(viewStore: viewStore)
+        }
+    }
+    
+    @ViewBuilder private func buildAcronymsView(viewStore: ViewStore<(selectedTab: Root.State.Tab, acronymsCount: Int, isAuthenthicated: Bool), Root.Action>) -> some View {
+        AcronymsView(store: self.store.scope(state: \.acronyms,
+                                             action: Root.Action.acronyms))
+        .tag(Root.State.Tab.acronyms)
+        .tabItem {
+            Label("Acronyms", systemImage: "text.quote")
+        }
+        .badge(viewStore.state.acronymsCount)
+    }
+    
+    @ViewBuilder private func buildUsersView(viewStore: ViewStore<(selectedTab: Root.State.Tab, acronymsCount: Int, isAuthenthicated: Bool), Root.Action>) -> some View {
+        UsersView(store: self.store.scope(state: \.users,
+                                          action: Root.Action.users))
+        .tag(Root.State.Tab.users)
+        .tabItem {
+            Label("Users", systemImage: "person.fill")
+        }
+    }
+    
+    @ViewBuilder private func buildCategoriesView(viewStore: ViewStore<(selectedTab: Root.State.Tab, acronymsCount: Int, isAuthenthicated: Bool), Root.Action>) -> some View {
+        CategoriesView(store: self.store.scope(state: \.categories,
+                                               action: Root.Action.categories))
+        .tag(Root.State.Tab.categories)
+        .tabItem {
+            Label("Categories", systemImage: "tag.fill")
         }
     }
 }

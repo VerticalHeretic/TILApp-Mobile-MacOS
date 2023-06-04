@@ -13,7 +13,7 @@ struct CategoriesFeature: ReducerProtocol {
     struct State: Equatable {
         var isLoading = false
         var categories: [CategoryResponse] = []
-        var path: [Destination] = []
+        var path = NavigationPath()
         var alert: AlertState<Action>?
         
         enum Destination: Equatable, Hashable {
@@ -25,7 +25,7 @@ struct CategoriesFeature: ReducerProtocol {
         case fetchCategories
         case deleteCategory(_ id: String)
         case createCategory
-        case navigationPathChanged([State.Destination])
+        case navigationPathChanged(NavigationPath)
         case copyButtonTapped(CategoryResponse)
         case copyButtonAlertDismissed
         
@@ -62,7 +62,7 @@ struct CategoriesFeature: ReducerProtocol {
                 await send(.deleteResponse(id))
             }
         case .createCategory:
-            state.path.append(.create)
+            state.path.append(State.Destination.create)
             return .none
         case .deleteResponse(let id):
             state.categories.removeAll(where: { $0.id.uuidString == id })

@@ -14,7 +14,8 @@ struct UsersFeature: ReducerProtocol {
         var isLoading = false
         var alert: AlertState<Action>?
         var users: [UserResponse] = []
-        var path: [Destination] = []
+        var path = NavigationPath()
+        
         
         enum Destination: Equatable, Hashable {
             case create
@@ -27,7 +28,7 @@ struct UsersFeature: ReducerProtocol {
         case fetchUsers
         case createUser
         case deleteUser(String)
-        case navigationPathChanged([State.Destination])
+        case navigationPathChanged(NavigationPath)
         
         case deleteResponse(String)
         case usersResponse([UserResponse])
@@ -64,7 +65,7 @@ struct UsersFeature: ReducerProtocol {
                 await send(.deleteResponse(id))
             }
         case .createUser:
-            state.path.append(.create)
+            state.path.append(State.Destination.create)
             return .none
         case let .navigationPathChanged(path):
             state.path = path

@@ -11,7 +11,7 @@ import ComposableArchitecture
 struct AcronymsState: Equatable {
     var isLoading = false
     var acronyms: [AcronymResponse] = []
-    var path: [Destination] = []
+    var path = NavigationPath()
     var searchTerm = ""
     var acronymState = AcronymFeature.State()
     
@@ -44,7 +44,7 @@ struct AcronymsFeature: ReducerProtocol {
         case createAcronym
         case addCategory(_ acronymId: String)
         case categoryAdded
-        case navigationPathChanged([State.Destination])
+        case navigationPathChanged(NavigationPath)
         case acronym(AcronymFeature.Action)
         case logout
         
@@ -75,11 +75,11 @@ struct AcronymsFeature: ReducerProtocol {
                 return .none
             case .editAcronym(let acronym):
                 state.acronymState = AcronymState(acronym: acronym)
-                state.path.append(.edit)
+                state.path.append(State.Destination.edit)
                 return .none
             case .createAcronym:
                 state.acronymState = AcronymState()
-                state.path.append(.create)
+                state.path.append(State.Destination.create)
                 return .none
             case .addCategory(let acronymID):
                 state.isLoading = true
