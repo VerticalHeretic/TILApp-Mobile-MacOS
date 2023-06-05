@@ -35,6 +35,9 @@ struct RootView: View {
             #if os(macOS)
             List(Root.State.Tab.allCases, selection: viewStore.binding(get: \.selectedTab, send: Root.Action.selectedTabChange)) { tab in
                 NavigationLink(tab.rawValue, value: tab)
+                    .badge(
+                        tab == .acronyms ? viewStore.state.acronymsCount : 0
+                    )
             }
             #endif
         } detail: {
@@ -47,6 +50,12 @@ struct RootView: View {
                 buildCategoriesView(viewStore: viewStore)
             }
         }
+        .frame(minWidth: 700,
+               idealWidth: 1000,
+               maxWidth: .infinity,
+               minHeight: 400,
+               idealHeight: 800,
+               maxHeight: .infinity)
     }
     
     @ViewBuilder private func buildiOSUI(viewStore: ViewStore<(selectedTab: Root.State.Tab, acronymsCount: Int, isAuthenthicated: Bool), Root.Action>) -> some View {
@@ -58,6 +67,7 @@ struct RootView: View {
     }
     
     @ViewBuilder private func buildAcronymsView(viewStore: ViewStore<(selectedTab: Root.State.Tab, acronymsCount: Int, isAuthenthicated: Bool), Root.Action>) -> some View {
+        #if os(iOS)
         AcronymsView(store: self.store.scope(state: \.acronyms,
                                              action: Root.Action.acronyms))
         .tag(Root.State.Tab.acronyms)
@@ -65,6 +75,11 @@ struct RootView: View {
             Label("Acronyms", systemImage: "text.quote")
         }
         .badge(viewStore.state.acronymsCount)
+        #else
+        AcronymsViewMac(store: self.store.scope(state: \.acronyms,
+                                                action: Root.Action.acronyms))
+        .tag(Root.State.Tab.acronyms)
+        #endif
     }
     
     @ViewBuilder private func buildUsersView(viewStore: ViewStore<(selectedTab: Root.State.Tab, acronymsCount: Int, isAuthenthicated: Bool), Root.Action>) -> some View {

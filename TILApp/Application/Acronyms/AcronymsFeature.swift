@@ -14,6 +14,7 @@ struct AcronymsState: Equatable {
     var path = NavigationPath()
     var searchTerm = ""
     var acronymState = AcronymFeature.State()
+    @BindingState var sortOrder = [KeyPathComparator(\AcronymResponse.long)]
     
     enum Destination: Equatable, Hashable {
         case edit
@@ -36,7 +37,7 @@ struct AcronymsFeature: ReducerProtocol {
     
     typealias State = AcronymsState
     
-    enum Action: Equatable {
+    enum Action: Equatable, BindableAction {
         case fetchAcronyms
         case searchAcronyms(String)
         case deleteAcronym(String)
@@ -45,6 +46,7 @@ struct AcronymsFeature: ReducerProtocol {
         case addCategory(_ acronymId: String)
         case categoryAdded
         case navigationPathChanged(NavigationPath)
+        case binding(BindingAction<State>)
         case acronym(AcronymFeature.Action)
         case logout
         
@@ -55,8 +57,12 @@ struct AcronymsFeature: ReducerProtocol {
     @Dependency(\.acronymsClient) var acronymClient
     
     var body: some ReducerProtocol<State, Action> {
+        BindingReducer()
         Reduce { state, action in
             switch action {
+            case .binding(\.$sortOrder):
+                state.acronyms.sort(using: state.sortOrder)
+                return .none
             case .acronym(.acronymResponse(let acronym)):
                 state.acronyms.append(acronym)
                 return .none

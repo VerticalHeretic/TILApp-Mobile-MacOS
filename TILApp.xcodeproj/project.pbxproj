@@ -50,6 +50,7 @@
 		A0EBEFF12A2C7E2F008B6755 /* CategoriesFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EBEFC52A2C7E2F008B6755 /* CategoriesFeature.swift */; };
 		A0EBEFF22A2C7E2F008B6755 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EBEFC72A2C7E2F008B6755 /* LoginView.swift */; };
 		A0EBEFF32A2C7E2F008B6755 /* LoginFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EBEFC82A2C7E2F008B6755 /* LoginFeature.swift */; };
+		A0EBEFF82A2DB8CB008B6755 /* AcronymsViewMac.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EBEFF72A2DB8CB008B6755 /* AcronymsViewMac.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,6 +109,7 @@
 		A0EBEFC72A2C7E2F008B6755 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		A0EBEFC82A2C7E2F008B6755 /* LoginFeature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginFeature.swift; sourceTree = "<group>"; };
 		A0EBEFC92A2C7E2F008B6755 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A0EBEFF72A2DB8CB008B6755 /* AcronymsViewMac.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcronymsViewMac.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -290,6 +292,7 @@
 			children = (
 				A0EBEFBB2A2C7E2F008B6755 /* AcronymsFeature.swift */,
 				A0EBEFBC2A2C7E2F008B6755 /* AcronymsView.swift */,
+				A0EBEFF72A2DB8CB008B6755 /* AcronymsViewMac.swift */,
 				A0EBEFBD2A2C7E2F008B6755 /* AcronymForm */,
 			);
 			path = Acronyms;
@@ -483,6 +486,7 @@
 				A0EBEFDD2A2C7E2F008B6755 /* Empty.swift in Sources */,
 				A0EBEFEF2A2C7E2F008B6755 /* CategoryFeature.swift in Sources */,
 				A0EBEFE42A2C7E2F008B6755 /* UserFeature.swift in Sources */,
+				A0EBEFF82A2DB8CB008B6755 /* AcronymsViewMac.swift in Sources */,
 				A0EBEFD22A2C7E2F008B6755 /* URLComponents+Users.swift in Sources */,
 				A0EBEFF12A2C7E2F008B6755 /* CategoriesFeature.swift in Sources */,
 				A0EBEFCC2A2C7E2F008B6755 /* AcronymsClient.swift in Sources */,

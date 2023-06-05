@@ -85,8 +85,6 @@ struct AcronymsView: View {
                                 Image(systemName: "rectangle.portrait.and.arrow.right")
                             }
                         }
-                        #else
-                        
                         #endif
                     }
                     .navigationDestination(for: AcronymsFeature.State.Destination.self) { destination in
