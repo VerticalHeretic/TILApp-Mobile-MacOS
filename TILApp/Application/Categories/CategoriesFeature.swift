@@ -41,12 +41,12 @@ struct CategoriesFeature: ReducerProtocol {
             let id = category.id.uuidString
             #if os(iOS)
             UIPasteboard.general.string = id
-            #else
-            NSPasteboard.general.setString(id, forType: .string)
-            #endif
             state.alert = AlertState {
                 TextState("Copied categoryID: \(id) 🏷️")
             }
+            #else
+            NSPasteboard.general.setString(id, forType: .string) // TODO: Not working, need to add some capabilities for macOS sandbox I suppose. Will fix later.
+            #endif
             return .none
         case .copyButtonAlertDismissed:
             state.alert = nil

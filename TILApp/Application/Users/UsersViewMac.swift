@@ -1,14 +1,14 @@
 //
-//  UsersView.swift
-//  TILApp-iOS
+//  UsersViewMac.swift
+//  TILApp
 //
-//  Created by Łukasz Stachnik on 27/05/2023.
+//  Created by Łukasz Stachnik on 06/06/2023.
 //
 
 import SwiftUI
 import ComposableArchitecture
 
-struct UsersView: View {
+struct UsersViewMac: View {
     let store: StoreOf<UsersFeature>
     
     var body: some View {
@@ -18,41 +18,37 @@ struct UsersView: View {
                     get: \.path,
                     send: UsersFeature.Action.navigationPathChanged)
             ) {
-                List(viewStore.users) { user in
-                    VStack(alignment: .leading, spacing: 8) {
-                        HStack {
-                            Text(user.name)
-                                .font(.headline)
-                            Text("-")
-                                .font(.headline)
-                            Text(user.username)
-                                .font(.headline)
-                        }
+                Table(viewStore.users) {
+                    TableColumn("Name") { user in
+                        Text(user.name)
+                            .contextMenu {
+                                buildContextMenu(viewStore: viewStore, user: user)
+                            }
+                    }
+                    
+                    TableColumn("Username") { user in
+                        Text(user.username)
+                            .contextMenu {
+                                buildContextMenu(viewStore: viewStore, user: user)
+                            }
+                    }
+                    
+                    TableColumn("UUID") { user in 
                         Text(user.id.uuidString)
-                            .font(.caption)
-                    }
-                    .onTapGesture {
-                        viewStore.send(.copyButtonTapped(user))
-                    }
-                    .swipeActions {
-                        Button(role: .destructive) {
-                            viewStore.send(.deleteUser(user.id.uuidString))
-                        } label: {
-                            Label("Delete", systemImage: "trash")
-                        }
+                            .contextMenu {
+                                buildContextMenu(viewStore: viewStore, user: user)
+                            }
                     }
                 }
                 .navigationTitle("Users")
                 .toolbar {
-                    #if os(iOS)
-                    ToolbarItem(placement: .navigationBarTrailing) {
+                    ToolbarItem {
                         Button {
                             viewStore.send(.createUser)
                         } label: {
                             Image(systemName: "plus")
                         }
                     }
-                    #endif
                 }
                 .navigationDestination(for: UsersFeature.State.Destination.self) { destination in
                     switch destination {
@@ -77,13 +73,26 @@ struct UsersView: View {
             }
         }
     }
+    
+    func buildContextMenu(viewStore: ViewStoreOf<UsersFeature>, user: UserResponse) -> some View {
+        VStack {
+            Button {
+                viewStore.send(.copyButtonTapped(user))
+            } label: {
+                Label("Copy", systemImage: "doc.on.clipboard.fill")
+            }
+            
+            Button {
+                viewStore.send(.deleteUser(user.id.uuidString))
+            } label: {
+                Label("Delete", systemImage: "trash")
+            }
+        }
+    }
 }
 
-struct UsersView_Previews: PreviewProvider {
+struct UsersViewMac_Previews: PreviewProvider {
     static var previews: some View {
-        UsersView(store: Store(initialState: UsersFeature.State(),
-                               reducer: {
-            UsersFeature()
-        }))
+        UsersViewMac(store: Store(initialState: .init(), reducer: { UsersFeature() }))
     }
 }

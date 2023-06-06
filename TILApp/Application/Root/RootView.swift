@@ -83,21 +83,33 @@ struct RootView: View {
     }
     
     @ViewBuilder private func buildUsersView(viewStore: ViewStore<(selectedTab: Root.State.Tab, acronymsCount: Int, isAuthenthicated: Bool), Root.Action>) -> some View {
+        #if os(iOS)
         UsersView(store: self.store.scope(state: \.users,
                                           action: Root.Action.users))
         .tag(Root.State.Tab.users)
         .tabItem {
             Label("Users", systemImage: "person.fill")
         }
+        #else
+        UsersViewMac(store: self.store.scope(state: \.users,
+                                             action: Root.Action.users))
+        .tag(Root.State.Tab.users)
+        #endif
     }
     
     @ViewBuilder private func buildCategoriesView(viewStore: ViewStore<(selectedTab: Root.State.Tab, acronymsCount: Int, isAuthenthicated: Bool), Root.Action>) -> some View {
+        #if os(iOS)
         CategoriesView(store: self.store.scope(state: \.categories,
                                                action: Root.Action.categories))
         .tag(Root.State.Tab.categories)
         .tabItem {
             Label("Categories", systemImage: "tag.fill")
         }
+        #else
+        CategoriesViewMac(store: self.store.scope(state: \.categories,
+                                               action: Root.Action.categories))
+        .tag(Root.State.Tab.categories)
+        #endif
     }
 }
 

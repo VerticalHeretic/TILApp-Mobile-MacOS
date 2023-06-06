@@ -42,14 +42,13 @@ struct UsersFeature: ReducerProtocol {
             let id = user.id.uuidString
             
             #if os(macOS)
-            NSPasteboard.general.setString(id, forType: .string)
+            NSPasteboard.general.setString(id, forType: .string) // TODO: Not working, need to add some capabilities for macOS sandbox I suppose. Will fix later.
             #else
             UIPasteboard.general.string = id
-            #endif
-            
             state.alert = AlertState {
                 TextState("Copied userID: \(id) 🙋🏻‍♀️")
             }
+            #endif
             return .none
         case .copyButtonAlertDismissed:
             state.alert = nil

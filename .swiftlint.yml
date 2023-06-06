@@ -1,5 +1,5 @@
 included:
-  - TILApp-iOS
+  - TILApp
 
 disabled_rules: # rule identifiers turned on by default to exclude from running
   - multiple_closures_with_trailing_closure

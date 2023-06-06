@@ -10,6 +10,7 @@ import ComposableArchitecture
 
 struct AcronymsState: Equatable {
     var isLoading = false
+    var error: String?
     var acronyms: [AcronymResponse] = []
     var path = NavigationPath()
     var searchTerm = ""
@@ -52,6 +53,7 @@ struct AcronymsFeature: ReducerProtocol {
         
         case acronymsResponse([AcronymResponse])
         case deleteResponse(String)
+        case errorResponse(String)
     }
     
     @Dependency(\.acronymsClient) var acronymClient
@@ -88,17 +90,22 @@ struct AcronymsFeature: ReducerProtocol {
                 state.path.append(State.Destination.create)
                 return .none
             case .addCategory(let acronymID):
+                state.error = nil
                 state.isLoading = true
                 return .run { send in
+                    let categoryID: String
                     #if os(macOS)
-                    guard let categoryID = NSPasteboard.general.string(forType: .string) else { return }
-                    try await self.acronymClient.addCategory(acronymID, categoryID)
-                    await send(.categoryAdded)
+                    categoryID = NSPasteboard.general.string(forType: .string) ?? ""
                     #else
-                    guard let categoryID = UIPasteboard.general.string else { return }
-                    try await self.acronymClient.addCategory(acronymID, categoryID)
-                    await send(.categoryAdded)
+                    categoryID = UIPasteboard.general.string ?? ""
                     #endif
+                    
+                    do {
+                        try await self.acronymClient.addCategory(acronymID, categoryID)
+                        await send(.categoryAdded)
+                    } catch {
+                        await send(.errorResponse(error.localizedDescription))
+                    }
                 }
             case .categoryAdded:
                 state.isLoading = false
@@ -109,6 +116,10 @@ struct AcronymsFeature: ReducerProtocol {
             case .acronymsResponse(let acronyms):
                 state.acronyms = acronyms
                 state.isLoading = false
+                return .none
+            case .errorResponse(let errorMessage):
+                state.isLoading = false
+                state.error = errorMessage
                 return .none
             case .deleteResponse(let id):
                 state.acronyms.removeAll(where: { $0.id.uuidString == id })

@@ -21,17 +21,26 @@ struct AcronymsViewMac: View {
             ) {
                 ZStack {
                     Table(viewStore.searchResults, sortOrder: viewStore.binding(\.$sortOrder)) {
-                        TableColumn("Short", value: \.short) {
-                            Text($0.short)
+                        TableColumn("Short", value: \.short) { acronym in
+                            Text(acronym.short)
+                                .contextMenu {
+                                    buildContextMenu(viewStore: viewStore, acronym: acronym)
+                                }
                         }
                         .width(min: 50, ideal: 100, max: 100)
                         
-                        TableColumn("Long", value: \.long) {
-                            Text($0.long)
+                        TableColumn("Long", value: \.long) { acronym in
+                            Text(acronym.long)
+                                .contextMenu {
+                                    buildContextMenu(viewStore: viewStore, acronym: acronym)
+                                }
                         }
                         
-                        TableColumn("Created by", value: \.user.username) {
-                            Text($0.user.username)
+                        TableColumn("Created by", value: \.user.username) { acronym in 
+                            Text(acronym.user.username)
+                                .contextMenu {
+                                    buildContextMenu(viewStore: viewStore, acronym: acronym)
+                                }
                         }
                     }
                     .navigationTitle("Acronyms")
@@ -75,9 +84,23 @@ struct AcronymsViewMac: View {
             }
         }
     }
+    
+    func buildContextMenu(viewStore: ViewStoreOf<AcronymsFeature>, acronym: AcronymResponse) -> some View {
+        VStack {
+            Button {
+                viewStore.send(.deleteAcronym(acronym.id.uuidString))
+            } label: {
+                Label("Delete", systemImage: "trash")
+            }
+            
+            Button {
+                viewStore.send(.editAcronym(acronym))
+            } label: {
+                Label("Edit", systemImage: "pencil")
+            }
+        }
+    }
 }
-
-
 
 struct AcronymsViewMac_Previews: PreviewProvider {
     static var previews: some View {
