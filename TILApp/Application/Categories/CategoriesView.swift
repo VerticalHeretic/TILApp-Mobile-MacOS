@@ -56,14 +56,9 @@ struct CategoriesView: View {
                         }
                         .navigationDestination(for: CategoriesFeature.State.Destination.self) { destination in
                             switch destination {
-                                // TODO: Approach below works but it is not saving the state, so when we move to other tab it will reset.
-                                // This probably need to be inside the `AcronymsFeature`. So I need to fix this
                             case .create:
-                                CategoryForm(store: Store(
-                                    initialState: CategoryState(),
-                                    reducer: {
-                                        CategoryFeature()
-                                    }))
+                                CategoryForm(store: self.store.scope(state: \.categoryState,
+                                                                     action: CategoriesFeature.Action.category))
                             }
                         }
                         .alert(
