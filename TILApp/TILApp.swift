@@ -9,7 +9,7 @@ import SwiftUI
 import ComposableArchitecture
 
 @main
-struct TILApp_iOSApp: App {
+struct TILApp: App {
     var body: some Scene {
         WindowGroup {
             RootView(store: Store(initialState: Root.State(),
@@ -17,6 +17,9 @@ struct TILApp_iOSApp: App {
                 Root()
                     ._printChanges()
             }))
+        }
+        .commands {
+            Menus()
         }
     }
 }

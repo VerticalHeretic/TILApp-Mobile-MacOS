@@ -43,6 +43,8 @@ struct UsersView: View {
                     }
                 }
                 .navigationTitle("Users")
+                .loadable(isLoading: viewStore.binding(\.$isLoading))
+                .errorable(error: viewStore.binding(\.$error))
                 .toolbar {
                     #if os(iOS)
                     ToolbarItem(placement: .navigationBarTrailing) {
@@ -55,12 +57,10 @@ struct UsersView: View {
                     #endif
                 }
                 .navigationDestination(for: UsersFeature.State.Destination.self) { destination in
-                   
                     switch destination {
                     case .create:
-                        UserForm(store: Store(initialState: UserState(), reducer: {
-                            UserFeature()
-                        }))
+                        UserForm(store: self.store.scope(state: \.userState,
+                                                         action: UsersFeature.Action.user))
                     }
                 }
                 .onAppear {

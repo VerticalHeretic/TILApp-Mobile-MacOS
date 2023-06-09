@@ -61,7 +61,7 @@ struct LoginView: View {
         }
     }
     
-    func logInWithGoogle(viewStore: ViewStore<LoginFeature.State, LoginFeature.Action>) async throws {
+    @MainActor func logInWithGoogle(viewStore: ViewStore<LoginFeature.State, LoginFeature.Action>) async throws {
         guard let googleAuthURL = URL(string: "http://localhost:8080/iOS/login-google") else {
             return
         }

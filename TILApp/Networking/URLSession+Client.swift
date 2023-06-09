@@ -7,10 +7,21 @@
 
 import Foundation
 
-enum NetworkError: Error {
+enum NetworkError: LocalizedError {
     case authenthicationError
     case notDefined(statusCode: Int)
     case nonHTTPResponse
+    
+    var errorDescription: String? {
+        switch self {
+        case .authenthicationError:
+            return "You are not authorized for this resource"
+        case .notDefined(let statusCode):
+            return "Not defined error: \(statusCode)"
+        case .nonHTTPResponse:
+            return "Non http"
+        }
+    }
 }
 
 public extension URLSession {

@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		A03668712A1FAA3800C12C56 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = A03668702A1FAA3800C12C56 /* ComposableArchitecture */; };
+		A09D4E232A33193E00A33101 /* ErrorModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09D4E222A33193E00A33101 /* ErrorModifier.swift */; };
+		A09D4E252A33194B00A33101 /* LoadingModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09D4E242A33194B00A33101 /* LoadingModifier.swift */; };
+		A0D2F19C2A2EF8400013F60C /* Menus.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D2F19B2A2EF8400013F60C /* Menus.swift */; };
+		A0D2F19E2A2F8EFA0013F60C /* UsersViewMac.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D2F19D2A2F8EFA0013F60C /* UsersViewMac.swift */; };
+		A0D2F1A02A2F91430013F60C /* CategoriesViewMac.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D2F19F2A2F91430013F60C /* CategoriesViewMac.swift */; };
 		A0EBEFCA2A2C7E2F008B6755 /* UsersClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EBEF912A2C7E2F008B6755 /* UsersClient.swift */; };
 		A0EBEFCB2A2C7E2F008B6755 /* CategoriesClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EBEF922A2C7E2F008B6755 /* CategoriesClient.swift */; };
 		A0EBEFCC2A2C7E2F008B6755 /* AcronymsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EBEF932A2C7E2F008B6755 /* AcronymsClient.swift */; };
@@ -33,7 +38,7 @@
 		A0EBEFE02A2C7E2F008B6755 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EBEFAB2A2C7E2F008B6755 /* Category.swift */; };
 		A0EBEFE12A2C7E2F008B6755 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EBEFAC2A2C7E2F008B6755 /* Token.swift */; };
 		A0EBEFE22A2C7E2F008B6755 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0EBEFAE2A2C7E2F008B6755 /* Preview Assets.xcassets */; };
-		A0EBEFE32A2C7E2F008B6755 /* TILApp_iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EBEFAF2A2C7E2F008B6755 /* TILApp_iOSApp.swift */; };
+		A0EBEFE32A2C7E2F008B6755 /* TILApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EBEFAF2A2C7E2F008B6755 /* TILApp.swift */; };
 		A0EBEFE42A2C7E2F008B6755 /* UserFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EBEFB32A2C7E2F008B6755 /* UserFeature.swift */; };
 		A0EBEFE52A2C7E2F008B6755 /* UserForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EBEFB42A2C7E2F008B6755 /* UserForm.swift */; };
 		A0EBEFE62A2C7E2F008B6755 /* UsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EBEFB52A2C7E2F008B6755 /* UsersView.swift */; };
@@ -50,7 +55,7 @@
 		A0EBEFF12A2C7E2F008B6755 /* CategoriesFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EBEFC52A2C7E2F008B6755 /* CategoriesFeature.swift */; };
 		A0EBEFF22A2C7E2F008B6755 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EBEFC72A2C7E2F008B6755 /* LoginView.swift */; };
 		A0EBEFF32A2C7E2F008B6755 /* LoginFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EBEFC82A2C7E2F008B6755 /* LoginFeature.swift */; };
-		A0EBEFF42A2C7E2F008B6755 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A0EBEFC92A2C7E2F008B6755 /* Info.plist */; };
+		A0EBEFF82A2DB8CB008B6755 /* AcronymsViewMac.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EBEFF72A2DB8CB008B6755 /* AcronymsViewMac.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +71,11 @@
 /* Begin PBXFileReference section */
 		A036685E2A1FA98500C12C56 /* TILApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TILApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A03668792A207B4700C12C56 /* TILAppUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TILAppUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A09D4E222A33193E00A33101 /* ErrorModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorModifier.swift; sourceTree = "<group>"; };
+		A09D4E242A33194B00A33101 /* LoadingModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingModifier.swift; sourceTree = "<group>"; };
+		A0D2F19B2A2EF8400013F60C /* Menus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menus.swift; sourceTree = "<group>"; };
+		A0D2F19D2A2F8EFA0013F60C /* UsersViewMac.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewMac.swift; sourceTree = "<group>"; };
+		A0D2F19F2A2F91430013F60C /* CategoriesViewMac.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewMac.swift; sourceTree = "<group>"; };
 		A0EBEF912A2C7E2F008B6755 /* UsersClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersClient.swift; sourceTree = "<group>"; };
 		A0EBEF922A2C7E2F008B6755 /* CategoriesClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesClient.swift; sourceTree = "<group>"; };
 		A0EBEF932A2C7E2F008B6755 /* AcronymsClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AcronymsClient.swift; sourceTree = "<group>"; };
@@ -91,7 +101,7 @@
 		A0EBEFAB2A2C7E2F008B6755 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		A0EBEFAC2A2C7E2F008B6755 /* Token.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		A0EBEFAE2A2C7E2F008B6755 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		A0EBEFAF2A2C7E2F008B6755 /* TILApp_iOSApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TILApp_iOSApp.swift; sourceTree = "<group>"; };
+		A0EBEFAF2A2C7E2F008B6755 /* TILApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TILApp.swift; sourceTree = "<group>"; };
 		A0EBEFB32A2C7E2F008B6755 /* UserFeature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserFeature.swift; sourceTree = "<group>"; };
 		A0EBEFB42A2C7E2F008B6755 /* UserForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserForm.swift; sourceTree = "<group>"; };
 		A0EBEFB52A2C7E2F008B6755 /* UsersView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersView.swift; sourceTree = "<group>"; };
@@ -109,6 +119,7 @@
 		A0EBEFC72A2C7E2F008B6755 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		A0EBEFC82A2C7E2F008B6755 /* LoginFeature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginFeature.swift; sourceTree = "<group>"; };
 		A0EBEFC92A2C7E2F008B6755 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A0EBEFF72A2DB8CB008B6755 /* AcronymsViewMac.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcronymsViewMac.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,17 +166,26 @@
 			path = TILAppUnitTests;
 			sourceTree = "<group>";
 		};
+		A09D4E212A33193500A33101 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				A09D4E222A33193E00A33101 /* ErrorModifier.swift */,
+				A09D4E242A33194B00A33101 /* LoadingModifier.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
 		A0EBEF8E2A2C7E2F008B6755 /* TILApp */ = {
 			isa = PBXGroup;
 			children = (
-				A0EBEF8F2A2C7E2F008B6755 /* Networking */,
-				A0EBEFA12A2C7E2F008B6755 /* Assets.xcassets */,
-				A0EBEFA22A2C7E2F008B6755 /* Utils */,
-				A0EBEFA62A2C7E2F008B6755 /* Models */,
-				A0EBEFAD2A2C7E2F008B6755 /* Preview Content */,
-				A0EBEFAF2A2C7E2F008B6755 /* TILApp_iOSApp.swift */,
 				A0EBEFB02A2C7E2F008B6755 /* Application */,
+				A0EBEFA12A2C7E2F008B6755 /* Assets.xcassets */,
 				A0EBEFC92A2C7E2F008B6755 /* Info.plist */,
+				A0EBEFA62A2C7E2F008B6755 /* Models */,
+				A0EBEF8F2A2C7E2F008B6755 /* Networking */,
+				A0EBEFAD2A2C7E2F008B6755 /* Preview Content */,
+				A0EBEFA22A2C7E2F008B6755 /* Utils */,
+				A0EBEFAF2A2C7E2F008B6755 /* TILApp.swift */,
 			);
 			path = TILApp;
 			sourceTree = "<group>";
@@ -249,6 +269,7 @@
 		A0EBEFB02A2C7E2F008B6755 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				A09D4E212A33193500A33101 /* Shared */,
 				A0EBEFB12A2C7E2F008B6755 /* Users */,
 				A0EBEFB72A2C7E2F008B6755 /* Root */,
 				A0EBEFBA2A2C7E2F008B6755 /* Acronyms */,
@@ -263,6 +284,7 @@
 			children = (
 				A0EBEFB22A2C7E2F008B6755 /* UserForm */,
 				A0EBEFB52A2C7E2F008B6755 /* UsersView.swift */,
+				A0D2F19D2A2F8EFA0013F60C /* UsersViewMac.swift */,
 				A0EBEFB62A2C7E2F008B6755 /* UsersFeature.swift */,
 			);
 			path = Users;
@@ -282,6 +304,7 @@
 			children = (
 				A0EBEFB82A2C7E2F008B6755 /* Root.swift */,
 				A0EBEFB92A2C7E2F008B6755 /* RootView.swift */,
+				A0D2F19B2A2EF8400013F60C /* Menus.swift */,
 			);
 			path = Root;
 			sourceTree = "<group>";
@@ -289,9 +312,10 @@
 		A0EBEFBA2A2C7E2F008B6755 /* Acronyms */ = {
 			isa = PBXGroup;
 			children = (
+				A0EBEFBD2A2C7E2F008B6755 /* AcronymForm */,
 				A0EBEFBB2A2C7E2F008B6755 /* AcronymsFeature.swift */,
 				A0EBEFBC2A2C7E2F008B6755 /* AcronymsView.swift */,
-				A0EBEFBD2A2C7E2F008B6755 /* AcronymForm */,
+				A0EBEFF72A2DB8CB008B6755 /* AcronymsViewMac.swift */,
 			);
 			path = Acronyms;
 			sourceTree = "<group>";
@@ -308,9 +332,10 @@
 		A0EBEFC02A2C7E2F008B6755 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				A0EBEFC12A2C7E2F008B6755 /* CategoriesView.swift */,
 				A0EBEFC22A2C7E2F008B6755 /* CategoryForm */,
 				A0EBEFC52A2C7E2F008B6755 /* CategoriesFeature.swift */,
+				A0EBEFC12A2C7E2F008B6755 /* CategoriesView.swift */,
+				A0D2F19F2A2F91430013F60C /* CategoriesViewMac.swift */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -424,7 +449,6 @@
 			files = (
 				A0EBEFE22A2C7E2F008B6755 /* Preview Assets.xcassets in Resources */,
 				A0EBEFD82A2C7E2F008B6755 /* Assets.xcassets in Resources */,
-				A0EBEFF42A2C7E2F008B6755 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -440,6 +464,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		A0EBEFF52A2C8147008B6755 /* Swiftlint */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -477,14 +502,18 @@
 				A0EBEFD12A2C7E2F008B6755 /* URLComponents+Categories.swift in Sources */,
 				A0EBEFE82A2C7E2F008B6755 /* Root.swift in Sources */,
 				A0EBEFDA2A2C7E2F008B6755 /* Keychain.swift in Sources */,
+				A09D4E252A33194B00A33101 /* LoadingModifier.swift in Sources */,
 				A0EBEFDE2A2C7E2F008B6755 /* User.swift in Sources */,
 				A0EBEFD92A2C7E2F008B6755 /* Auth.swift in Sources */,
 				A0EBEFED2A2C7E2F008B6755 /* AcronymForm.swift in Sources */,
 				A0EBEFCF2A2C7E2F008B6755 /* URLRequest+Users.swift in Sources */,
+				A0D2F19E2A2F8EFA0013F60C /* UsersViewMac.swift in Sources */,
 				A0EBEFE92A2C7E2F008B6755 /* RootView.swift in Sources */,
 				A0EBEFDD2A2C7E2F008B6755 /* Empty.swift in Sources */,
+				A09D4E232A33193E00A33101 /* ErrorModifier.swift in Sources */,
 				A0EBEFEF2A2C7E2F008B6755 /* CategoryFeature.swift in Sources */,
 				A0EBEFE42A2C7E2F008B6755 /* UserFeature.swift in Sources */,
+				A0EBEFF82A2DB8CB008B6755 /* AcronymsViewMac.swift in Sources */,
 				A0EBEFD22A2C7E2F008B6755 /* URLComponents+Users.swift in Sources */,
 				A0EBEFF12A2C7E2F008B6755 /* CategoriesFeature.swift in Sources */,
 				A0EBEFCC2A2C7E2F008B6755 /* AcronymsClient.swift in Sources */,
@@ -495,11 +524,13 @@
 				A0EBEFE52A2C7E2F008B6755 /* UserForm.swift in Sources */,
 				A0EBEFCE2A2C7E2F008B6755 /* URLRequest+Categories.swift in Sources */,
 				A0EBEFD72A2C7E2F008B6755 /* JSONDecoder+Shared.swift in Sources */,
-				A0EBEFE32A2C7E2F008B6755 /* TILApp_iOSApp.swift in Sources */,
+				A0EBEFE32A2C7E2F008B6755 /* TILApp.swift in Sources */,
 				A0EBEFE12A2C7E2F008B6755 /* Token.swift in Sources */,
 				A0EBEFE62A2C7E2F008B6755 /* UsersView.swift in Sources */,
 				A0EBEFD32A2C7E2F008B6755 /* URLComponents+Acronyms.swift in Sources */,
 				A0EBEFD52A2C7E2F008B6755 /* JSONEncoder+Shared.swift in Sources */,
+				A0D2F19C2A2EF8400013F60C /* Menus.swift in Sources */,
+				A0D2F1A02A2F91430013F60C /* CategoriesViewMac.swift in Sources */,
 				A0EBEFF22A2C7E2F008B6755 /* LoginView.swift in Sources */,
 				A0EBEFE02A2C7E2F008B6755 /* Category.swift in Sources */,
 				A0EBEFEC2A2C7E2F008B6755 /* AcronymFeature.swift in Sources */,

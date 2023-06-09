@@ -1,14 +1,14 @@
 //
-//  CategoriesView.swift
-//  TILApp-iOS
+//  CategoriesViewMac.swift
+//  TILApp
 //
-//  Created by Łukasz Stachnik on 29/05/2023.
+//  Created by Łukasz Stachnik on 06/06/2023.
 //
 
 import SwiftUI
 import ComposableArchitecture
 
-struct CategoriesView: View {
+struct CategoriesViewMac: View {
     let store: StoreOf<CategoriesFeature>
     
     var body: some View {
@@ -17,36 +17,42 @@ struct CategoriesView: View {
                 path: viewStore.binding(
                     get: \.path,
                     send: CategoriesFeature.Action.navigationPathChanged)) {
-                        List(viewStore.categories) { category in
-                            VStack(alignment: .leading, spacing: 8) {
+                        Table(viewStore.categories) {
+                            TableColumn("Name") { category in
                                 Text(category.name)
+                                    .contextMenu {
+                                        buildContextMenu(viewStore: viewStore, category: category)
+                                    }
+                            }
+                            
+                            TableColumn("UUID") { category in
                                 Text(category.id.uuidString)
-                                    .font(.caption)
-                            }
-                            .swipeActions {
-                                Button(role: .destructive) {
-                                    viewStore.send(.deleteCategory(category.id.uuidString))
-                                } label: {
-                                    Label("Delete", systemImage: "trash")
-                                }
-                            }
-                            .onTapGesture {
-                                viewStore.send(.copyButtonTapped(category))
+                                    .contextMenu {
+                                       buildContextMenu(viewStore: viewStore, category: category)
+                                    }
                             }
                         }
+                        .navigationTitle("Categories")
                         .loadable(isLoading: viewStore.binding(\.$isLoading))
                         .errorable(error: viewStore.binding(\.$error))
-                        .navigationTitle("Categories")
                         .toolbar {
-                            #if os(iOS)
-                            ToolbarItem(placement: .navigationBarTrailing) {
+                            ToolbarItem {
                                 Button {
                                     viewStore.send(.createCategory)
                                 } label: {
                                     Image(systemName: "plus")
                                 }
+                                .keyboardShortcut("n")
                             }
-                            #endif
+                            
+                            ToolbarItem {
+                                Button {
+                                    viewStore.send(.fetchCategories)
+                                } label: {
+                                    Image(systemName: "arrow.clockwise")
+                                }
+                                .keyboardShortcut("r")
+                            }
                         }
                         .onAppear {
                             if viewStore.categories.isEmpty {
@@ -70,12 +76,28 @@ struct CategoriesView: View {
                     }
         }
     }
+    
+    func buildContextMenu(viewStore: ViewStoreOf<CategoriesFeature>, category: CategoryResponse) -> some View {
+        VStack {
+            Button {
+                viewStore.send(.deleteCategory(category.id.uuidString))
+            } label: {
+                Label("Delete", systemImage: "trash")
+            }
+            
+            Button {
+                viewStore.send(.copyButtonTapped(category))
+            } label: {
+                Label("Copy", systemImage: "doc.on.clipboard.fill")
+            }
+        }
+    }
 }
 
-struct CategoriesView_Previews: PreviewProvider {
+struct CategoriesViewMac_Previews: PreviewProvider {
     static var previews: some View {
-        CategoriesView(store: Store(initialState: CategoriesFeature.State(),
-                                    reducer: {
+        CategoriesViewMac(store: Store(initialState: CategoriesFeature.State(),
+                                       reducer: {
             CategoriesFeature()
         }))
     }

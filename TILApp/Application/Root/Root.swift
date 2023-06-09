@@ -11,10 +11,14 @@ import ComposableArchitecture
 struct Root: ReducerProtocol {
     
     struct State: Equatable {
-        enum Tab {
-            case acronyms
-            case users
-            case categories
+        enum Tab: String, CaseIterable, Identifiable {
+            var id: Self {
+                return self
+            }
+            
+            case acronyms = "Acronyms"
+            case users = "Users"
+            case categories = "Categories"
         }
         
         var isAuthenthicated: Bool = Auth.shared.token != nil
