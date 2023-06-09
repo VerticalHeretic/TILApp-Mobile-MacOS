@@ -50,6 +50,7 @@ struct UsersViewMac: View {
                         } label: {
                             Image(systemName: "plus")
                         }
+                        .keyboardShortcut("n")
                     }
                     
                     ToolbarItem {
@@ -58,6 +59,7 @@ struct UsersViewMac: View {
                         } label: {
                             Image(systemName: "arrow.clockwise")
                         }
+                        .keyboardShortcut("r")
                     }
                 }
                 .navigationDestination(for: UsersFeature.State.Destination.self) { destination in

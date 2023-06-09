@@ -42,6 +42,7 @@ struct CategoriesViewMac: View {
                                 } label: {
                                     Image(systemName: "plus")
                                 }
+                                .keyboardShortcut("n")
                             }
                             
                             ToolbarItem {
@@ -50,6 +51,7 @@ struct CategoriesViewMac: View {
                                 } label: {
                                     Image(systemName: "arrow.clockwise")
                                 }
+                                .keyboardShortcut("r")
                             }
                         }
                         .onAppear {

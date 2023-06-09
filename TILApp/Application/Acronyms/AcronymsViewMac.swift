@@ -48,8 +48,33 @@ struct AcronymsViewMac: View {
                 .navigationTitle("Acronyms")
                 .loadable(isLoading: viewStore.binding(\.$isLoading))
                 .errorable(error: viewStore.binding(\.$error))
-                .toolbar {
-                    buildToolbar(viewStore: viewStore)
+                .toolbar(id: "acronyms_toolbar") {
+                    ToolbarItem(id: "createAcronym_button") {
+                        Button {
+                            viewStore.send(.createAcronym)
+                        } label: {
+                            Image(systemName: "plus")
+                        }
+                        .keyboardShortcut("n")
+                    }
+                    
+                    ToolbarItem(id: "fetchAcronyms_button") {
+                        Button {
+                            viewStore.send(.fetchAcronyms)
+                        } label: {
+                            Image(systemName: "arrow.clockwise")
+                        }
+                        .keyboardShortcut("r")
+                    }
+                    
+                    ToolbarItem(id: "logout_button") {
+                        Button {
+                            viewStore.send(.logout)
+                        } label: {
+                            Image(systemName: "rectangle.portrait.and.arrow.right")
+                        }
+                        .keyboardShortcut("q")
+                    }
                 }
                 .navigationDestination(for: AcronymsFeature.State.Destination.self) { destination in
                     switch destination {
@@ -82,34 +107,6 @@ struct AcronymsViewMac: View {
                 viewStore.send(.editAcronym(acronym))
             } label: {
                 Label("Edit", systemImage: "pencil")
-            }
-        }
-    }
-    
-    func buildToolbar(viewStore: ViewStoreOf<AcronymsFeature>) -> some ToolbarContent {
-        Group {
-            ToolbarItem {
-                Button {
-                    viewStore.send(.fetchAcronyms)
-                } label: {
-                    Image(systemName: "arrow.clockwise")
-                }
-            }
-            
-            ToolbarItem {
-                Button {
-                    viewStore.send(.createAcronym)
-                } label: {
-                    Image(systemName: "plus")
-                }
-            }
-            
-            ToolbarItem {
-                Button {
-                    viewStore.send(.logout)
-                } label: {
-                    Image(systemName: "rectangle.portrait.and.arrow.right")
-                }
             }
         }
     }

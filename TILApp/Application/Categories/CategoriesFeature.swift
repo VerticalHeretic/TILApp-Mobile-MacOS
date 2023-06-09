@@ -58,6 +58,9 @@ struct CategoriesFeature: ReducerProtocol {
             case .copyButtonAlertDismissed:
                 state.alert = nil
                 return .none
+            case .category(.categoryResponse(let category)):
+                state.categories.append(category)
+                return .none
             case .category:
                 return .none
             case .binding:
