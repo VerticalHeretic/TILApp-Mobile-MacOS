@@ -2,11 +2,11 @@
 
 ## Description
 
-This is just a simple iOS app, made for fun and learning sake. Learning what? 
+This is just a simple iOS app, made for fun and learning sake. Additionally project is build using new XCode 15, and some of 5.9 Swift features.
+What I'm learning what? 
 
 - Composable Architecture
 - Vapor 
-- iOS 16.0 - SwiftUI Features
 - Creating some nice light weight async/await networking
 
 ## What API I'm using? 
