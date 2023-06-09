@@ -43,6 +43,8 @@ struct UsersView: View {
                     }
                 }
                 .navigationTitle("Users")
+                .loadable(isLoading: viewStore.binding(\.$isLoading))
+                .errorable(error: viewStore.binding(\.$error))
                 .toolbar {
                     #if os(iOS)
                     ToolbarItem(placement: .navigationBarTrailing) {

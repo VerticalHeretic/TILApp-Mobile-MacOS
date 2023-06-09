@@ -34,6 +34,8 @@ struct CategoriesView: View {
                                 viewStore.send(.copyButtonTapped(category))
                             }
                         }
+                        .loadable(isLoading: viewStore.binding(\.$isLoading))
+                        .errorable(error: viewStore.binding(\.$error))
                         .navigationTitle("Categories")
                         .toolbar {
                             #if os(iOS)

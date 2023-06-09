@@ -90,6 +90,14 @@ struct AcronymsViewMac: View {
         Group {
             ToolbarItem {
                 Button {
+                    viewStore.send(.fetchAcronyms)
+                } label: {
+                    Image(systemName: "arrow.clockwise")
+                }
+            }
+            
+            ToolbarItem {
+                Button {
                     viewStore.send(.createAcronym)
                 } label: {
                     Image(systemName: "plus")

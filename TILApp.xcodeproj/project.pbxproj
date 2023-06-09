@@ -333,9 +333,9 @@
 			isa = PBXGroup;
 			children = (
 				A0EBEFC22A2C7E2F008B6755 /* CategoryForm */,
+				A0EBEFC52A2C7E2F008B6755 /* CategoriesFeature.swift */,
 				A0EBEFC12A2C7E2F008B6755 /* CategoriesView.swift */,
 				A0D2F19F2A2F91430013F60C /* CategoriesViewMac.swift */,
-				A0EBEFC52A2C7E2F008B6755 /* CategoriesFeature.swift */,
 			);
 			path = Categories;
 			sourceTree = "<group>";

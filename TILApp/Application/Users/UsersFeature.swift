@@ -11,11 +11,12 @@ import ComposableArchitecture
 struct UsersFeature: ReducerProtocol {
     
     struct State: Equatable {
-        var isLoading = false
         var alert: AlertState<Action>?
         var users: [UserResponse] = []
         var path = NavigationPath()
         var userState = UserFeature.State()
+        @BindingState var error: String?
+        @BindingState var isLoading = false
         
         enum Destination: Equatable, Hashable {
             case create
@@ -34,6 +35,7 @@ struct UsersFeature: ReducerProtocol {
         
         case deleteResponse(String)
         case usersResponse([UserResponse])
+        case errorResponse(String)
     }
     
     @Dependency(\.usersClient) var usersClient
@@ -66,8 +68,12 @@ struct UsersFeature: ReducerProtocol {
                 }
             case .deleteUser(let id):
                 return .run { send in
-                    try await self.usersClient.delete(id)
-                    await send(.deleteResponse(id))
+                    do {
+                        try await self.usersClient.delete(id)
+                        await send(.deleteResponse(id))
+                    } catch {
+                        await send(.errorResponse(error.localizedDescription))
+                    }
                 }
             case .createUser:
                 state.path.append(State.Destination.create)
@@ -79,8 +85,13 @@ struct UsersFeature: ReducerProtocol {
                 state.users.removeAll(where: { $0.id.uuidString == id })
                 return .none
             case .usersResponse(let users):
+                state.error = nil
                 state.users = users
                 state.isLoading = false
+                return .none
+            case .errorResponse(let errorMessage):
+                state.isLoading = false
+                state.error = errorMessage
                 return .none
             case .binding:
                 return .none

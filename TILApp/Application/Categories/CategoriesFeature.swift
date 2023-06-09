@@ -11,11 +11,12 @@ import ComposableArchitecture
 struct CategoriesFeature: ReducerProtocol {
     
     struct State: Equatable {
-        var isLoading = false
         var categories: [CategoryResponse] = []
         var path = NavigationPath()
         var alert: AlertState<Action>?
         var categoryState = CategoryFeature.State()
+        @BindingState var error: String?
+        @BindingState var isLoading = false
         
         enum Destination: Equatable, Hashable {
             case create
@@ -34,6 +35,7 @@ struct CategoriesFeature: ReducerProtocol {
         
         case deleteResponse(_ id: String)
         case categoriesResponse([CategoryResponse])
+        case errorResponse(String)
     }
     
     @Dependency(\.categoriesClient) var categoriesClient
@@ -63,22 +65,38 @@ struct CategoriesFeature: ReducerProtocol {
             case .fetchCategories:
                 state.isLoading = true
                 return .run { send in
-                    try await send(.categoriesResponse(self.categoriesClient.all()))
+                    do {
+                        let categories = try await self.categoriesClient.all()
+                        await send(.categoriesResponse(categories))
+                    } catch {
+                        await send(.errorResponse(error.localizedDescription))
+                    }
                 }
             case .deleteCategory(let id):
+                state.isLoading = true
                 return .run { send in
-                    try await self.categoriesClient.delete(id)
-                    await send(.deleteResponse(id))
+                    do {
+                        try await self.categoriesClient.delete(id)
+                        await send(.deleteResponse(id))
+                    } catch {
+                        await send(.errorResponse(error.localizedDescription))
+                    }
                 }
             case .createCategory:
                 state.path.append(State.Destination.create)
                 return .none
             case .deleteResponse(let id):
                 state.categories.removeAll(where: { $0.id.uuidString == id })
+                state.isLoading = false
                 return .none
             case .categoriesResponse(let categories):
+                state.error = nil
                 state.categories = categories
                 state.isLoading = false
+                return .none
+            case .errorResponse(let errorMessage):
+                state.isLoading = false
+                state.error = errorMessage
                 return .none
             case let .navigationPathChanged(path):
                 state.path = path

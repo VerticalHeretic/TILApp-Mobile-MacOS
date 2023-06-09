@@ -124,6 +124,7 @@ struct AcronymsFeature: ReducerProtocol {
                 state.path = path
                 return .none
             case .acronymsResponse(let acronyms):
+                state.error = nil
                 state.acronyms = acronyms
                 state.isLoading = false
                 return .none

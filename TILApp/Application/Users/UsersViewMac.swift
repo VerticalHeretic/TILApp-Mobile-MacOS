@@ -41,6 +41,8 @@ struct UsersViewMac: View {
                     }
                 }
                 .navigationTitle("Users")
+                .loadable(isLoading: viewStore.binding(\.$isLoading))
+                .errorable(error: viewStore.binding(\.$error))
                 .toolbar {
                     ToolbarItem {
                         Button {
@@ -49,13 +51,20 @@ struct UsersViewMac: View {
                             Image(systemName: "plus")
                         }
                     }
+                    
+                    ToolbarItem {
+                        Button {
+                            viewStore.send(.fetchUsers)
+                        } label: {
+                            Image(systemName: "arrow.clockwise")
+                        }
+                    }
                 }
                 .navigationDestination(for: UsersFeature.State.Destination.self) { destination in
                     switch destination {
                     case .create:
-                        UserForm(store: Store(initialState: UserState(), reducer: {
-                            UserFeature()
-                        }))
+                        UserForm(store: self.store.scope(state: \.userState,
+                                                         action: UsersFeature.Action.user))
                     }
                 }
                 .onAppear {
@@ -67,9 +76,6 @@ struct UsersViewMac: View {
                     self.store.scope(state: \.alert, action: { $0 }),
                     dismiss: .copyButtonAlertDismissed
                 )
-                .refreshable {
-                    viewStore.send(.fetchUsers)
-                }
             }
         }
     }
