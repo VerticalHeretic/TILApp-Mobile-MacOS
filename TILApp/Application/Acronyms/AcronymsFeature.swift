@@ -9,13 +9,13 @@ import SwiftUI
 import ComposableArchitecture
 
 struct AcronymsState: Equatable {
-    var isLoading = false
-    var error: String?
     var acronyms: [AcronymResponse] = []
     var path = NavigationPath()
     var searchTerm = ""
     var acronymState = AcronymFeature.State()
     @BindingState var sortOrder = [KeyPathComparator(\AcronymResponse.long)]
+    @BindingState var error: String?
+    @BindingState var isLoading = false
     
     enum Destination: Equatable, Hashable {
         case edit
@@ -71,12 +71,22 @@ struct AcronymsFeature: ReducerProtocol {
             case .fetchAcronyms:
                 state.isLoading = true
                 return .run { send in
-                    try await send(.acronymsResponse(self.acronymClient.all()))
+                    do {
+                        let acronyms = try await self.acronymClient.all()
+                        await send(.acronymsResponse(acronyms))
+                    } catch {
+                        await send(.errorResponse(error.localizedDescription))
+                    }
                 }
             case .deleteAcronym(let id):
+                state.isLoading = true
                 return .run { send in
-                    try await self.acronymClient.delete(id)
-                    await send(.deleteResponse(id))
+                    do {
+                        try await self.acronymClient.delete(id)
+                        await send(.deleteResponse(id))
+                    } catch {
+                        await send(.errorResponse(error.localizedDescription))
+                    }
                 }
             case .searchAcronyms(let term):
                 state.searchTerm = term
@@ -122,6 +132,7 @@ struct AcronymsFeature: ReducerProtocol {
                 state.error = errorMessage
                 return .none
             case .deleteResponse(let id):
+                state.isLoading = false
                 state.acronyms.removeAll(where: { $0.id.uuidString == id })
                 return .none
             default:

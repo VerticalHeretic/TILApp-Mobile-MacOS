@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		A03668712A1FAA3800C12C56 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = A03668702A1FAA3800C12C56 /* ComposableArchitecture */; };
+		A09D4E232A33193E00A33101 /* ErrorModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09D4E222A33193E00A33101 /* ErrorModifier.swift */; };
+		A09D4E252A33194B00A33101 /* LoadingModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09D4E242A33194B00A33101 /* LoadingModifier.swift */; };
 		A0D2F19C2A2EF8400013F60C /* Menus.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D2F19B2A2EF8400013F60C /* Menus.swift */; };
 		A0D2F19E2A2F8EFA0013F60C /* UsersViewMac.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D2F19D2A2F8EFA0013F60C /* UsersViewMac.swift */; };
 		A0D2F1A02A2F91430013F60C /* CategoriesViewMac.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D2F19F2A2F91430013F60C /* CategoriesViewMac.swift */; };
@@ -69,6 +71,8 @@
 /* Begin PBXFileReference section */
 		A036685E2A1FA98500C12C56 /* TILApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TILApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A03668792A207B4700C12C56 /* TILAppUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TILAppUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A09D4E222A33193E00A33101 /* ErrorModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorModifier.swift; sourceTree = "<group>"; };
+		A09D4E242A33194B00A33101 /* LoadingModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingModifier.swift; sourceTree = "<group>"; };
 		A0D2F19B2A2EF8400013F60C /* Menus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menus.swift; sourceTree = "<group>"; };
 		A0D2F19D2A2F8EFA0013F60C /* UsersViewMac.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewMac.swift; sourceTree = "<group>"; };
 		A0D2F19F2A2F91430013F60C /* CategoriesViewMac.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewMac.swift; sourceTree = "<group>"; };
@@ -160,6 +164,15 @@
 			children = (
 			);
 			path = TILAppUnitTests;
+			sourceTree = "<group>";
+		};
+		A09D4E212A33193500A33101 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				A09D4E222A33193E00A33101 /* ErrorModifier.swift */,
+				A09D4E242A33194B00A33101 /* LoadingModifier.swift */,
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 		A0EBEF8E2A2C7E2F008B6755 /* TILApp */ = {
@@ -256,6 +269,7 @@
 		A0EBEFB02A2C7E2F008B6755 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				A09D4E212A33193500A33101 /* Shared */,
 				A0EBEFB12A2C7E2F008B6755 /* Users */,
 				A0EBEFB72A2C7E2F008B6755 /* Root */,
 				A0EBEFBA2A2C7E2F008B6755 /* Acronyms */,
@@ -488,6 +502,7 @@
 				A0EBEFD12A2C7E2F008B6755 /* URLComponents+Categories.swift in Sources */,
 				A0EBEFE82A2C7E2F008B6755 /* Root.swift in Sources */,
 				A0EBEFDA2A2C7E2F008B6755 /* Keychain.swift in Sources */,
+				A09D4E252A33194B00A33101 /* LoadingModifier.swift in Sources */,
 				A0EBEFDE2A2C7E2F008B6755 /* User.swift in Sources */,
 				A0EBEFD92A2C7E2F008B6755 /* Auth.swift in Sources */,
 				A0EBEFED2A2C7E2F008B6755 /* AcronymForm.swift in Sources */,
@@ -495,6 +510,7 @@
 				A0D2F19E2A2F8EFA0013F60C /* UsersViewMac.swift in Sources */,
 				A0EBEFE92A2C7E2F008B6755 /* RootView.swift in Sources */,
 				A0EBEFDD2A2C7E2F008B6755 /* Empty.swift in Sources */,
+				A09D4E232A33193E00A33101 /* ErrorModifier.swift in Sources */,
 				A0EBEFEF2A2C7E2F008B6755 /* CategoryFeature.swift in Sources */,
 				A0EBEFE42A2C7E2F008B6755 /* UserFeature.swift in Sources */,
 				A0EBEFF82A2DB8CB008B6755 /* AcronymsViewMac.swift in Sources */,

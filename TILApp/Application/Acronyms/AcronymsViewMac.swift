@@ -19,48 +19,34 @@ struct AcronymsViewMac: View {
                     send: AcronymsFeature.Action.navigationPathChanged
                 )
             ) {
-                ZStack {
-                    Table(viewStore.searchResults, sortOrder: viewStore.binding(\.$sortOrder)) {
-                        TableColumn("Short", value: \.short) { acronym in
-                            Text(acronym.short)
-                                .contextMenu {
-                                    buildContextMenu(viewStore: viewStore, acronym: acronym)
-                                }
-                        }
-                        .width(min: 50, ideal: 100, max: 100)
-                        
-                        TableColumn("Long", value: \.long) { acronym in
-                            Text(acronym.long)
-                                .contextMenu {
-                                    buildContextMenu(viewStore: viewStore, acronym: acronym)
-                                }
-                        }
-                        
-                        TableColumn("Created by", value: \.user.username) { acronym in 
-                            Text(acronym.user.username)
-                                .contextMenu {
-                                    buildContextMenu(viewStore: viewStore, acronym: acronym)
-                                }
-                        }
-                    }
-                    .navigationTitle("Acronyms")
-                    .toolbar {
-                        ToolbarItem {
-                            Button {
-                                viewStore.send(.createAcronym)
-                            } label: {
-                                Image(systemName: "plus")
+                Table(viewStore.searchResults, sortOrder: viewStore.binding(\.$sortOrder)) {
+                    TableColumn("Short", value: \.short) { acronym in
+                        Text(acronym.short)
+                            .contextMenu {
+                                buildContextMenu(viewStore: viewStore, acronym: acronym)
                             }
-                        }
-                        
-                        ToolbarItem {
-                            Button {
-                                viewStore.send(.logout)
-                            } label: {
-                                Image(systemName: "rectangle.portrait.and.arrow.right")
-                            }
-                        }
                     }
+                    .width(min: 50, ideal: 100, max: 100)
+                    
+                    TableColumn("Long", value: \.long) { acronym in
+                        Text(acronym.long)
+                            .contextMenu {
+                                buildContextMenu(viewStore: viewStore, acronym: acronym)
+                            }
+                    }
+                    
+                    TableColumn("Created by", value: \.user.username) { acronym in
+                        Text(acronym.user.username)
+                            .contextMenu {
+                                buildContextMenu(viewStore: viewStore, acronym: acronym)
+                            }
+                    }
+                }
+                .navigationTitle("Acronyms")
+                .loadable(isLoading: viewStore.binding(\.$isLoading))
+                .errorable(error: viewStore.binding(\.$error))
+                .toolbar {
+                    buildToolbar(viewStore: viewStore)
                 }
                 .navigationDestination(for: AcronymsFeature.State.Destination.self) { destination in
                     switch destination {
@@ -72,14 +58,10 @@ struct AcronymsViewMac: View {
                                                             action: AcronymsFeature.Action.acronym))
                     }
                 }
-                
-                if viewStore.isLoading {
-                    ProgressView()
-                }
-            }
-            .onAppear {
-                if viewStore.acronyms.isEmpty {
-                    viewStore.send(.fetchAcronyms)
+                .onAppear {
+                    if viewStore.acronyms.isEmpty {
+                        viewStore.send(.fetchAcronyms)
+                    }
                 }
             }
         }
@@ -97,6 +79,26 @@ struct AcronymsViewMac: View {
                 viewStore.send(.editAcronym(acronym))
             } label: {
                 Label("Edit", systemImage: "pencil")
+            }
+        }
+    }
+    
+    func buildToolbar(viewStore: ViewStoreOf<AcronymsFeature>) -> some ToolbarContent {
+        Group {
+            ToolbarItem {
+                Button {
+                    viewStore.send(.createAcronym)
+                } label: {
+                    Image(systemName: "plus")
+                }
+            }
+            
+            ToolbarItem {
+                Button {
+                    viewStore.send(.logout)
+                } label: {
+                    Image(systemName: "rectangle.portrait.and.arrow.right")
+                }
             }
         }
     }
