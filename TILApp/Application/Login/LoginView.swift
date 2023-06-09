@@ -42,8 +42,9 @@ struct LoginView: View {
                     .buttonStyle(.borderedProminent)
                     
                     HStack(spacing: 24) {
-                        Image("GoogleNormal")
-                            .frame(width: 18, height: 18)
+                        Image(.googleNormal)
+                            .resizable()
+                            .frame(width: 24, height: 24)
                         Text("SIGN IN WITH GOOGLE")
                             .foregroundColor(Color.black.opacity(0.54))
                     }
@@ -55,19 +56,47 @@ struct LoginView: View {
                             try await logInWithGoogle(viewStore: viewStore)
                         }
                     }
+                    
+                    HStack(spacing: 24) {
+                        Image(.github)
+                            .resizable()
+                            .frame(width: 24, height: 24)
+                        Text("SIGN IN WITH GITHUB")
+                            .foregroundColor(Color.black.opacity(0.54))
+                    }
+                    .padding(.horizontal, 8)
+                    .frame(height: 40)
+                    .background(Color.accentColor)
+                    .onTapGesture {
+                        Task {
+                            try await logInWithGithub(viewStore: viewStore)
+                        }
+                    }
                 }
                 .navigationTitle("Sign In")
             }
         }
     }
     
-    @MainActor func logInWithGoogle(viewStore: ViewStore<LoginFeature.State, LoginFeature.Action>) async throws {
+    @MainActor func logInWithGoogle(viewStore: ViewStoreOf<LoginFeature>) async throws {
         guard let googleAuthURL = URL(string: "http://localhost:8080/iOS/login-google") else {
             return
         }
         
         let scheme = "tilapp"
         let result = try await webAuthenticationSession.authenticate(using: googleAuthURL, callbackURLScheme: scheme)
+        let token = result.queryParameters?["token"]
+        Auth.shared.token = token
+        viewStore.send(.loginResponse)
+    }
+    
+    @MainActor func logInWithGithub(viewStore: ViewStoreOf<LoginFeature>) async throws {
+        guard let githubAuthURL = URL(string: "http://localhost:8080/iOS/login-github") else {
+            return
+        }
+        
+        let scheme = "tilapp"
+        let result = try await webAuthenticationSession.authenticate(using: githubAuthURL, callbackURLScheme: scheme)
         let token = result.queryParameters?["token"]
         Auth.shared.token = token
         viewStore.send(.loginResponse)
