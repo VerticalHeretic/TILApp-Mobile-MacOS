@@ -42,6 +42,9 @@ struct AcronymsViewMac: View {
                             }
                     }
                 }
+                .searchable(text: viewStore.binding(get: \.searchTerm,
+                                                    send: { .searchAcronyms($0)})
+                )
                 .navigationTitle("Acronyms")
                 .loadable(isLoading: viewStore.binding(\.$isLoading))
                 .errorable(error: viewStore.binding(\.$error))
