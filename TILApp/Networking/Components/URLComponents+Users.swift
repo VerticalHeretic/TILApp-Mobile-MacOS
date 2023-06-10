@@ -24,4 +24,8 @@ extension URLComponents {
     static var login: Self {
         return Self(path: "/api/users/login")
     }
+    
+    static var loginSIWA: Self {
+        return Self(path: "/api/users/siwa")
+    }
 }

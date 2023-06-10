@@ -38,7 +38,7 @@ struct LoginFeature: ReducerProtocol {
                         try await self.userClient.login(.init(username: username, password: password))
                         await send(.loginResponse)
                     } catch {
-                        debugPrint("DEBUG", error)
+                        LoggerClient.authLogger.error("\(error)")
                     }
                 }
             case .loginResponse:

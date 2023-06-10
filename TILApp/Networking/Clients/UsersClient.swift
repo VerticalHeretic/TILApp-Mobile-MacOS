@@ -15,6 +15,7 @@ struct UsersClient {
     var register: (UserRequest) async throws -> UserResponse
     var delete: (_ id: String) async throws -> Void
     var login: (_ credentials: LoginData) async throws -> Void
+    var loginWithApple: (_ token: SignInWithAppleToken) async throws -> Token
 }
 
 extension UsersClient: DependencyKey {
@@ -37,6 +38,9 @@ extension UsersClient: DependencyKey {
         login: { credentials in
             let token: Token = try await URLSession.shared.request(for: .login(credentials: credentials))
             Auth.shared.token = token.value
+        },
+        loginWithApple: { signInToken in
+            return try await URLSession.shared.request(for: .login(token: signInToken))
         }
     )
 }

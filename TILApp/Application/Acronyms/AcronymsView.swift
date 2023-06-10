@@ -98,15 +98,15 @@ struct AcronymsView: View {
                                                             action: AcronymsFeature.Action.acronym))
                     }
                 }
-                .onAppear {
-                    if viewStore.acronyms.isEmpty { viewStore.send(.fetchAcronyms) }
-                }
                 .refreshable {
                     viewStore.send(.fetchAcronyms)
                 }
                 .searchable(text: viewStore.binding(get: \.searchTerm,
                                                     send: { .searchAcronyms($0)})
                 )
+            }
+            .onAppear {
+                if viewStore.acronyms.isEmpty { viewStore.send(.fetchAcronyms) }
             }
         }
     }

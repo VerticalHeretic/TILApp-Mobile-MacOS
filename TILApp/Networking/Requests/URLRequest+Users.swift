@@ -41,6 +41,12 @@ extension URLRequest {
         return Self(components: .login)
             .add(headers: ["Authorization": "Basic \(loginString)"])
             .add(httpMethod: .post)
-         
+    }
+    
+    static func login(token: SignInWithAppleToken) -> Self {
+        return Self(components: .loginSIWA)
+            .add(httpMethod: .post)
+            .add(body: token)
+            .add(headers: ["Content-Type": "application/json"])
     }
 }

@@ -6,12 +6,15 @@
 //
 
 import Foundation
+import ComposableArchitecture
 
 final class Auth {
     
     static let shared = Auth()
     
     static let keychainKey = "TIL-API-KEY"
+    
+    @Dependency(\.usersClient) var usersClient
     
     var token: String? {
         get {
@@ -28,5 +31,11 @@ final class Auth {
     
     func logout() {
         token = nil
+    }
+    
+    func login(signInWithAppleToken: SignInWithAppleToken) async throws {
+        let token = try await usersClient.loginWithApple(signInWithAppleToken)
+        LoggerClient.authLogger.info("Signed in with Apple")
+        self.token = token.value
     }
 }
