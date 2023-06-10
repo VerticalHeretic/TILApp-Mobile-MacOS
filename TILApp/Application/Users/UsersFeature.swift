@@ -64,7 +64,12 @@ struct UsersFeature: ReducerProtocol {
             case .fetchUsers:
                 state.isLoading = true
                 return .run { send in
-                    try await send(.usersResponse(self.usersClient.all()))
+                    do {
+                        let users = try await self.usersClient.all()
+                        await send(.usersResponse(users))
+                    } catch {
+                        await send(.errorResponse(error.localizedDescription))
+                    }
                 }
             case .deleteUser(let id):
                 return .run { send in

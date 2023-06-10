@@ -36,7 +36,7 @@ struct CategoryFeature: ReducerProtocol {
                     
                     try await send(.categoryResponse(self.categoriesClient.create(request)))
                 }
-            case .categoryResponse(let category):
+            case .categoryResponse:
                 return .none
             }
         }

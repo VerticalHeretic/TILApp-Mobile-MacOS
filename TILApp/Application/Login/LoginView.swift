@@ -72,6 +72,15 @@ struct LoginView: View {
                             try await logInWithGithub(viewStore: viewStore)
                         }
                     }
+                    
+                    SignInWithAppleButton(.signIn) { request in
+                        request.requestedScopes = [.fullName, .email]
+                    } onCompletion: { result in
+                        Task {
+                            try await handleSignInWithAppleIDResult(result, viewStore: viewStore)
+                        }
+                    }
+                    .frame(width: 140, height: 40)
                 }
                 .navigationTitle("Sign In")
             }
@@ -100,6 +109,31 @@ struct LoginView: View {
         let token = result.queryParameters?["token"]
         Auth.shared.token = token
         viewStore.send(.loginResponse)
+    }
+
+    @MainActor func handleSignInWithAppleIDResult(_ result: Result<ASAuthorization, Error>, viewStore: ViewStoreOf<LoginFeature>) async throws {
+        switch result {
+        case .success(let success):
+            guard let credential = success.credential as? ASAuthorizationAppleIDCredential,
+                  let identityToken = credential.identityToken,
+                  let identityTokenString = String(data: identityToken, encoding: .utf8) else {
+                return // TODO: Add handling o the error
+            }
+            
+            let name: String?
+            if let nameProvided = credential.fullName {
+                let firstName = nameProvided.givenName ?? ""
+                let lastName = nameProvided.familyName ?? ""
+                name = "\(firstName) \(lastName)"
+            } else {
+                name = nil
+            }
+            
+            try await Auth.shared.login(signInWithAppleToken: .init(token: identityTokenString, name: name))
+            viewStore.send(.loginResponse)
+        case .failure(let failure):
+            break
+        }
     }
 }
 

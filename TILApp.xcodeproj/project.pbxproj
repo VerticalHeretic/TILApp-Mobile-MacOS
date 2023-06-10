@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		A03668712A1FAA3800C12C56 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = A03668702A1FAA3800C12C56 /* ComposableArchitecture */; };
+		A06043582A346EB0002CB3C4 /* SignInWithAppleToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06043572A346EB0002CB3C4 /* SignInWithAppleToken.swift */; };
+		A060435B2A347644002CB3C4 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060435A2A347644002CB3C4 /* Logger.swift */; };
 		A09D4E232A33193E00A33101 /* ErrorModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09D4E222A33193E00A33101 /* ErrorModifier.swift */; };
 		A09D4E252A33194B00A33101 /* LoadingModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09D4E242A33194B00A33101 /* LoadingModifier.swift */; };
 		A0D2F19C2A2EF8400013F60C /* Menus.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D2F19B2A2EF8400013F60C /* Menus.swift */; };
@@ -71,6 +73,9 @@
 /* Begin PBXFileReference section */
 		A036685E2A1FA98500C12C56 /* TILApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TILApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A03668792A207B4700C12C56 /* TILAppUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TILAppUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A06043572A346EB0002CB3C4 /* SignInWithAppleToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithAppleToken.swift; sourceTree = "<group>"; };
+		A06043592A3470D0002CB3C4 /* TILApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TILApp.entitlements; sourceTree = "<group>"; };
+		A060435A2A347644002CB3C4 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		A09D4E222A33193E00A33101 /* ErrorModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorModifier.swift; sourceTree = "<group>"; };
 		A09D4E242A33194B00A33101 /* LoadingModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingModifier.swift; sourceTree = "<group>"; };
 		A0D2F19B2A2EF8400013F60C /* Menus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menus.swift; sourceTree = "<group>"; };
@@ -171,6 +176,7 @@
 			children = (
 				A09D4E222A33193E00A33101 /* ErrorModifier.swift */,
 				A09D4E242A33194B00A33101 /* LoadingModifier.swift */,
+				A060435A2A347644002CB3C4 /* Logger.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -178,6 +184,7 @@
 		A0EBEF8E2A2C7E2F008B6755 /* TILApp */ = {
 			isa = PBXGroup;
 			children = (
+				A06043592A3470D0002CB3C4 /* TILApp.entitlements */,
 				A0EBEFB02A2C7E2F008B6755 /* Application */,
 				A0EBEFA12A2C7E2F008B6755 /* Assets.xcassets */,
 				A0EBEFC92A2C7E2F008B6755 /* Info.plist */,
@@ -254,6 +261,7 @@
 				A0EBEFAA2A2C7E2F008B6755 /* LoginData.swift */,
 				A0EBEFAB2A2C7E2F008B6755 /* Category.swift */,
 				A0EBEFAC2A2C7E2F008B6755 /* Token.swift */,
+				A06043572A346EB0002CB3C4 /* SignInWithAppleToken.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -495,6 +503,7 @@
 				A0EBEFE72A2C7E2F008B6755 /* UsersFeature.swift in Sources */,
 				A0EBEFD02A2C7E2F008B6755 /* URLRequest+Acronyms.swift in Sources */,
 				A0EBEFCB2A2C7E2F008B6755 /* CategoriesClient.swift in Sources */,
+				A060435B2A347644002CB3C4 /* Logger.swift in Sources */,
 				A0EBEFCA2A2C7E2F008B6755 /* UsersClient.swift in Sources */,
 				A0EBEFD42A2C7E2F008B6755 /* URLSession+Client.swift in Sources */,
 				A0EBEFEE2A2C7E2F008B6755 /* CategoriesView.swift in Sources */,
@@ -530,6 +539,7 @@
 				A0EBEFD32A2C7E2F008B6755 /* URLComponents+Acronyms.swift in Sources */,
 				A0EBEFD52A2C7E2F008B6755 /* JSONEncoder+Shared.swift in Sources */,
 				A0D2F19C2A2EF8400013F60C /* Menus.swift in Sources */,
+				A06043582A346EB0002CB3C4 /* SignInWithAppleToken.swift in Sources */,
 				A0D2F1A02A2F91430013F60C /* CategoriesViewMac.swift in Sources */,
 				A0EBEFF22A2C7E2F008B6755 /* LoginView.swift in Sources */,
 				A0EBEFE02A2C7E2F008B6755 /* Category.swift in Sources */,
@@ -674,6 +684,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = TILApp/TILApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TILApp/Preview Content\"";
@@ -708,6 +719,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = TILApp/TILApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TILApp/Preview Content\"";
