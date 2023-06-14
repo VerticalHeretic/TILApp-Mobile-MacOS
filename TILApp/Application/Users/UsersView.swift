@@ -21,6 +21,10 @@ struct UsersView: View {
                 List(viewStore.users) { user in
                     VStack(alignment: .leading, spacing: 8) {
                         HStack {
+                            if let picture = user.profilePicture, let url = URL(string: picture) {
+                                AsyncImage(url: url)
+                            }
+                            
                             Text(user.name)
                                 .font(.headline)
                             Text("-")
@@ -54,6 +58,14 @@ struct UsersView: View {
                             Image(systemName: "plus")
                         }
                     }
+                    
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button {
+                            viewStore.send(.addProfilePicture)
+                        } label: {
+                            Image(systemName: "person.crop.circle.fill")
+                        }
+                    }
                     #endif
                 }
                 .navigationDestination(for: UsersFeature.State.Destination.self) { destination in
@@ -61,6 +73,9 @@ struct UsersView: View {
                     case .create:
                         UserForm(store: self.store.scope(state: \.userState,
                                                          action: UsersFeature.Action.user))
+                    case .addProfilePhoto:
+                        AddUserProfilePictureView(store: self.store.scope(state: \.addUserProfilePictureState,
+                                                                          action: UsersFeature.Action.profilePicture))
                     }
                 }
                 .onAppear {

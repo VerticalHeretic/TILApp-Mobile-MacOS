@@ -34,7 +34,7 @@ struct UserFeature: ReducerProtocol {
                 return .none
             case .saveTapped:
                 return .run { [name = state.name, username = state.username, password = state.password] send in
-                    let request = UserRequest(name: name, username: username, password: password)
+                    let request = UserRequest(name: name, username: username, password: password, email: "")
                     
                     try await send(.userResponse(self.usersClient.register(request)))
                 }

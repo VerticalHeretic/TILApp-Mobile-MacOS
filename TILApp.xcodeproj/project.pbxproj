@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		A03668712A1FAA3800C12C56 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = A03668702A1FAA3800C12C56 /* ComposableArchitecture */; };
+		A04804D72A38AFB6002C472A /* ImageUploadData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04804D62A38AFB6002C472A /* ImageUploadData.swift */; };
+		A04804DA2A38B636002C472A /* AddUserProfilePictureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04804D92A38B636002C472A /* AddUserProfilePictureView.swift */; };
+		A04804DC2A38B647002C472A /* AddUserProfilePictureFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04804DB2A38B647002C472A /* AddUserProfilePictureFeature.swift */; };
 		A06043582A346EB0002CB3C4 /* SignInWithAppleToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06043572A346EB0002CB3C4 /* SignInWithAppleToken.swift */; };
 		A060435B2A347644002CB3C4 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A060435A2A347644002CB3C4 /* Logger.swift */; };
 		A09D4E232A33193E00A33101 /* ErrorModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09D4E222A33193E00A33101 /* ErrorModifier.swift */; };
@@ -73,6 +76,9 @@
 /* Begin PBXFileReference section */
 		A036685E2A1FA98500C12C56 /* TILApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TILApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A03668792A207B4700C12C56 /* TILAppUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TILAppUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A04804D62A38AFB6002C472A /* ImageUploadData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploadData.swift; sourceTree = "<group>"; };
+		A04804D92A38B636002C472A /* AddUserProfilePictureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserProfilePictureView.swift; sourceTree = "<group>"; };
+		A04804DB2A38B647002C472A /* AddUserProfilePictureFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserProfilePictureFeature.swift; sourceTree = "<group>"; };
 		A06043572A346EB0002CB3C4 /* SignInWithAppleToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithAppleToken.swift; sourceTree = "<group>"; };
 		A06043592A3470D0002CB3C4 /* TILApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TILApp.entitlements; sourceTree = "<group>"; };
 		A060435A2A347644002CB3C4 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
@@ -171,6 +177,15 @@
 			path = TILAppUnitTests;
 			sourceTree = "<group>";
 		};
+		A04804D82A38B616002C472A /* ProfilePicture */ = {
+			isa = PBXGroup;
+			children = (
+				A04804D92A38B636002C472A /* AddUserProfilePictureView.swift */,
+				A04804DB2A38B647002C472A /* AddUserProfilePictureFeature.swift */,
+			);
+			path = ProfilePicture;
+			sourceTree = "<group>";
+		};
 		A09D4E212A33193500A33101 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
@@ -262,6 +277,7 @@
 				A0EBEFAB2A2C7E2F008B6755 /* Category.swift */,
 				A0EBEFAC2A2C7E2F008B6755 /* Token.swift */,
 				A06043572A346EB0002CB3C4 /* SignInWithAppleToken.swift */,
+				A04804D62A38AFB6002C472A /* ImageUploadData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -290,6 +306,7 @@
 		A0EBEFB12A2C7E2F008B6755 /* Users */ = {
 			isa = PBXGroup;
 			children = (
+				A04804D82A38B616002C472A /* ProfilePicture */,
 				A0EBEFB22A2C7E2F008B6755 /* UserForm */,
 				A0EBEFB52A2C7E2F008B6755 /* UsersView.swift */,
 				A0D2F19D2A2F8EFA0013F60C /* UsersViewMac.swift */,
@@ -500,6 +517,7 @@
 				A0EBEFDC2A2C7E2F008B6755 /* Acronym.swift in Sources */,
 				A0EBEFF32A2C7E2F008B6755 /* LoginFeature.swift in Sources */,
 				A0EBEFDF2A2C7E2F008B6755 /* LoginData.swift in Sources */,
+				A04804D72A38AFB6002C472A /* ImageUploadData.swift in Sources */,
 				A0EBEFE72A2C7E2F008B6755 /* UsersFeature.swift in Sources */,
 				A0EBEFD02A2C7E2F008B6755 /* URLRequest+Acronyms.swift in Sources */,
 				A0EBEFCB2A2C7E2F008B6755 /* CategoriesClient.swift in Sources */,
@@ -513,12 +531,14 @@
 				A0EBEFDA2A2C7E2F008B6755 /* Keychain.swift in Sources */,
 				A09D4E252A33194B00A33101 /* LoadingModifier.swift in Sources */,
 				A0EBEFDE2A2C7E2F008B6755 /* User.swift in Sources */,
+				A04804DC2A38B647002C472A /* AddUserProfilePictureFeature.swift in Sources */,
 				A0EBEFD92A2C7E2F008B6755 /* Auth.swift in Sources */,
 				A0EBEFED2A2C7E2F008B6755 /* AcronymForm.swift in Sources */,
 				A0EBEFCF2A2C7E2F008B6755 /* URLRequest+Users.swift in Sources */,
 				A0D2F19E2A2F8EFA0013F60C /* UsersViewMac.swift in Sources */,
 				A0EBEFE92A2C7E2F008B6755 /* RootView.swift in Sources */,
 				A0EBEFDD2A2C7E2F008B6755 /* Empty.swift in Sources */,
+				A04804DA2A38B636002C472A /* AddUserProfilePictureView.swift in Sources */,
 				A09D4E232A33193E00A33101 /* ErrorModifier.swift in Sources */,
 				A0EBEFEF2A2C7E2F008B6755 /* CategoryFeature.swift in Sources */,
 				A0EBEFE42A2C7E2F008B6755 /* UserFeature.swift in Sources */,

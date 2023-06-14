@@ -67,6 +67,11 @@ struct UsersViewMac: View {
                     case .create:
                         UserForm(store: self.store.scope(state: \.userState,
                                                          action: UsersFeature.Action.user))
+                    case .addProfilePhoto:
+                        AddUserProfilePictureView(store: Store(initialState: AddUserProfilePictureFeature.State(),
+                                                               reducer: {
+                            AddUserProfilePictureFeature()
+                        }))
                     }
                 }
                 .onAppear {

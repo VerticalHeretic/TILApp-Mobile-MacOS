@@ -49,4 +49,17 @@ extension URLRequest {
             .add(body: token)
             .add(headers: ["Content-Type": "application/json"])
     }
+    
+    static func addProfilePhoto(imageData: ImageUploadData) -> Self {
+        return Self(components: .userProfilePicture)
+            .add(httpMethod: .post)
+            .add(body: imageData)
+            .add(headers: ["Content-Type": "application/json"])
+            .add(headers: ["Authorization": "Bearer \(Auth.shared.token ?? "")"])
+    }
+    
+    static func getProfilePhoto(id: String) -> Self {
+        return Self(components: .profilePicture(id: id))
+            .add(httpMethod: .get)
+    }
 }
