@@ -11,7 +11,6 @@ struct UserResponse: Codable, Equatable, Identifiable, Hashable {
     let id: UUID
     let name: String
     let username: String
-    let profilePicture: String?
 }
 
 struct UserRequest: Codable, Hashable {
