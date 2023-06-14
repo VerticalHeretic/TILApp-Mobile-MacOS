@@ -16,6 +16,8 @@ struct UsersClient {
     var delete: (_ id: String) async throws -> Void
     var login: (_ credentials: LoginData) async throws -> Void
     var loginWithApple: (_ token: SignInWithAppleToken) async throws -> Token
+    var getProfilePicture: (_ id: String) async throws -> Data
+    var addProfilePicture: (_ data: ImageUploadData) async throws -> Void
 }
 
 extension UsersClient: DependencyKey {
@@ -41,6 +43,12 @@ extension UsersClient: DependencyKey {
         },
         loginWithApple: { signInToken in
             return try await URLSession.shared.request(for: .login(token: signInToken))
+        },
+        getProfilePicture: { id in
+            return try await URLSession.shared.request(for: .getProfilePhoto(id: id))
+        },
+        addProfilePicture: { data in
+            let _: EmptyResponse = try await URLSession.shared.request(for: .addProfilePhoto(imageData: data))
         }
     )
 }

@@ -15,15 +15,11 @@ struct UserForm: View {
     var body: some View {
         WithViewStore(self.store, observe: { $0 }) { viewStore in
             Form(content: {
-                #if os(iOS)
                 TextField("User's name", text: viewStore.binding(\.$name))
                 TextField("User's username", text: viewStore.binding(\.$username))
                     .textContentType(.username)
                 SecureField("User's password", text: viewStore.binding(\.$password))
                     .textContentType(.newPassword)
-                #else
-                
-                #endif
                 
                 Button("Save") {
                     Task {

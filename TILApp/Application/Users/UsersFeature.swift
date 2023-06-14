@@ -15,11 +15,13 @@ struct UsersFeature: ReducerProtocol {
         var users: [UserResponse] = []
         var path = NavigationPath()
         var userState = UserFeature.State()
+        var addUserProfilePictureState = AddUserProfilePictureFeature.State()
         @BindingState var error: String?
         @BindingState var isLoading = false
         
         enum Destination: Equatable, Hashable {
             case create
+            case addProfilePhoto
         }
     }
     
@@ -28,9 +30,11 @@ struct UsersFeature: ReducerProtocol {
         case copyButtonAlertDismissed
         case fetchUsers
         case createUser
+        case addProfilePicture
         case deleteUser(String)
         case navigationPathChanged(NavigationPath)
         case user(UserFeature.Action)
+        case profilePicture(AddUserProfilePictureFeature.Action)
         case binding(BindingAction<State>)
         
         case deleteResponse(String)
@@ -44,8 +48,6 @@ struct UsersFeature: ReducerProtocol {
         BindingReducer()
         Reduce { state, action in
             switch action {
-            case .user:
-                return .none
             case .copyButtonTapped(let user):
                 let id = user.id.uuidString
                 
@@ -83,6 +85,9 @@ struct UsersFeature: ReducerProtocol {
             case .createUser:
                 state.path.append(State.Destination.create)
                 return .none
+            case .addProfilePicture:
+                state.path.append(State.Destination.addProfilePhoto)
+                return .none
             case let .navigationPathChanged(path):
                 state.path = path
                 return .none
@@ -100,7 +105,13 @@ struct UsersFeature: ReducerProtocol {
                 return .none
             case .binding:
                 return .none
+            default:
+                return .none
             }
+        }
+        
+        Scope(state: \.addUserProfilePictureState, action: /Action.profilePicture) {
+            AddUserProfilePictureFeature()
         }
         
         Scope(state: \.userState, action: /Action.user) {

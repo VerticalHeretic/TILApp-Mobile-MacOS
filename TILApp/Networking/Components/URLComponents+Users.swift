@@ -28,4 +28,12 @@ extension URLComponents {
     static var loginSIWA: Self {
         return Self(path: "/api/users/siwa")
     }
+    
+    static var userProfilePicture: Self {
+        return Self(path: "/api/users/profilePicture")
+    }
+    
+    static func profilePicture(id: String) -> Self {
+        return Self(path: "/api/users/\(id)/profilePicture")
+    }
 }
